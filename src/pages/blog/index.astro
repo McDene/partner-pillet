@@ -1,0 +1,26 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title="Blog — Partner Pillet">
+  <h1>Blog</h1>
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <a href={`/blog/${post.id}`}>
+          <strong>{post.data.title}</strong>
+        </a>
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toLocaleDateString("fr-FR")}
+        </time>
+        {post.data.description && <p>{post.data.description}</p>}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

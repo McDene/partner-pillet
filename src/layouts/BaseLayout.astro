@@ -17,11 +17,13 @@ const { title, description = "Partner Pillet" } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <header>
       <nav>
         <a href="/">Accueil</a>
+        <a href="/blog">Blog</a>
       </nav>
     </header>
     <main>
@@ -30,5 +32,17 @@ const { title, description = "Partner Pillet" } = Astro.props;
     <footer>
       <p>&copy; {new Date().getFullYear()} Partner Pillet</p>
     </footer>
+    <script>
+      const identity = (window as any).netlifyIdentity;
+      if (identity) {
+        identity.on("init", (user: any) => {
+          if (!user) {
+            identity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
