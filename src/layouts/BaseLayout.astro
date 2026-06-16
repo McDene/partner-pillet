@@ -17,7 +17,35 @@ interface Props {
 const { title, description = "Pillet & Partners — Conseil stratégique en Suisse romande" } = Astro.props;
 
 const siteUrl = "https://radiant-bavarois-2c95dd.netlify.app";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const ogImage = `${siteUrl}/og-image.png`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Pillet & Partners",
+  "description": "Cabinet de conseil stratégique en Suisse romande accompagnant les dirigeants de PME dans leurs étapes décisives.",
+  "url": siteUrl,
+  "logo": `${siteUrl}/assets/logo.png`,
+  "image": ogImage,
+  "founder": {
+    "@type": "Person",
+    "name": "Line Pillet",
+    "jobTitle": "Fondatrice & Managing Partner"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Suisse romande"
+  },
+  "knowsAbout": [
+    "Conseil stratégique",
+    "Transitions stratégiques",
+    "Transformation organisationnelle",
+    "Transmission et gouvernance d'entreprise",
+    "Direction stratégique externalisée"
+  ],
+  "inLanguage": "fr-CH"
+};
 ---
 
 <!doctype html>
@@ -51,6 +79,13 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- JSON-LD Structured Data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>

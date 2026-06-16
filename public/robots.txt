@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://radiant-bavarois-2c95dd.netlify.app/sitemap-index.xml
