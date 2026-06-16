@@ -12,6 +12,10 @@ slug:
   clean_accents: true
 
 collections:
+
+  # ─────────────────────────────────────────────
+  # PAGE D'ACCUEIL
+  # ─────────────────────────────────────────────
   - name: "home"
     label: "Page d'accueil"
     delete: false
@@ -23,119 +27,189 @@ collections:
         file: "src/content/home/index.json"
         fields:
 
-          - label: "SEO"
+          # SEO
+          - label: "SEO (référencement)"
             name: "seo"
             widget: "object"
+            collapsed: true
             fields:
-              - { label: "Titre (balise <title>)", name: "title", widget: "string" }
-              - { label: "Méta description", name: "description", widget: "text" }
+              - label: "Titre de l'onglet"
+                name: "title"
+                widget: "string"
+                hint: "Affiché dans l'onglet du navigateur et sur Google. Ex : Pillet & Partners — Conseil stratégique en Suisse romande"
+              - label: "Description (méta)"
+                name: "description"
+                widget: "text"
+                hint: "Résumé du site affiché sur Google (160 caractères max)."
 
-          - label: "Hero"
+          # HERO
+          - label: "Bannière principale (Hero)"
             name: "hero"
             widget: "object"
+            collapsed: false
             fields:
-              - { label: "Sur-titre", name: "eyebrow", widget: "string" }
-              - { label: "Titre — début", name: "title", widget: "string" }
-              - { label: "Titre — mot en valeur (italique bleu)", name: "titleAccent", widget: "string" }
-              - { label: "Titre — fin", name: "titleEnd", widget: "string" }
-              - { label: "Sous-titre", name: "subtitle", widget: "text" }
+              - label: "Sur-titre"
+                name: "eyebrow"
+                widget: "string"
+                hint: "Petite ligne au-dessus du titre principal."
+              - label: "Titre — début"
+                name: "title"
+                widget: "string"
+                hint: "Première partie du H1, avant les mots mis en valeur."
+              - label: "Titre — mots en italique bleu"
+                name: "titleAccent"
+                widget: "string"
+                hint: "Ces mots apparaissent en italique bleu dans le titre. Ex : étapes décisives"
+              - label: "Titre — fin"
+                name: "titleEnd"
+                widget: "string"
+                hint: "Suite du titre après les mots en valeur."
+              - label: "Texte d'introduction"
+                name: "subtitle"
+                widget: "text"
               - label: "Bouton principal"
                 name: "ctaPrimary"
                 widget: "object"
                 fields:
-                  - { label: "Libellé", name: "label", widget: "string" }
-                  - { label: "Lien", name: "href", widget: "string" }
+                  - { label: "Texte du bouton", name: "label", widget: "string" }
+                  - { label: "Lien", name: "href", widget: "string", hint: "Ex : /contact ou #section" }
               - label: "Bouton secondaire"
                 name: "ctaSecondary"
                 widget: "object"
                 fields:
-                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "Texte du bouton", name: "label", widget: "string" }
                   - { label: "Lien", name: "href", widget: "string" }
 
-          - label: "Bandeau signature"
+          # BANDEAU SIGNATURE
+          - label: "Bandeau photo avec citation"
             name: "signature"
             widget: "object"
+            collapsed: true
             fields:
-              - { label: "Sur-titre", name: "eyebrow", widget: "string" }
-              - { label: "Citation — début", name: "quote", widget: "string" }
-              - { label: "Citation — mots en valeur (italique doré)", name: "quoteAccent", widget: "string" }
-              - { label: "Citation — fin", name: "quoteEnd", widget: "string" }
-              - { label: "Image de fond", name: "image", widget: "image" }
+              - label: "Sur-titre"
+                name: "eyebrow"
+                widget: "string"
+              - label: "Citation — début"
+                name: "quote"
+                widget: "string"
+                hint: "Début de la phrase, avant les mots mis en valeur."
+              - label: "Citation — mots en italique doré"
+                name: "quoteAccent"
+                widget: "string"
+                hint: "Ces mots apparaissent en italique doré. Ex : cernes d'un arbre"
+              - label: "Citation — fin"
+                name: "quoteEnd"
+                widget: "string"
+              - label: "Photo de fond"
+                name: "image"
+                widget: "image"
+                hint: "Photo pleine largeur derrière la citation. Format paysage (2400×900 px recommandé)."
+                allow_multiple: false
 
-          - label: "Les défis"
+          # LES DÉFIS
+          - label: "Section « Les défis »"
             name: "challenges"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Sur-titre", name: "eyebrow", widget: "string" }
               - { label: "Titre (H2)", name: "title", widget: "string" }
-              - { label: "Introduction", name: "intro", widget: "text" }
-              - { label: "Fin de l'intro (italique)", name: "introAccent", widget: "string" }
+              - label: "Texte d'introduction"
+                name: "intro"
+                widget: "text"
+              - label: "Fin de l'intro (italique navy)"
+                name: "introAccent"
+                widget: "string"
+                hint: "Cette phrase apparaît en italique à la fin du paragraphe d'introduction."
               - label: "Liste des défis"
                 name: "items"
                 widget: "list"
+                label_singular: "Défi"
+                hint: "6 défis numérotés automatiquement."
                 field: { label: "Défi", name: "text", widget: "string" }
-              - { label: "Phrase de conclusion", name: "conclusion", widget: "text" }
+              - label: "Phrase de conclusion"
+                name: "conclusion"
+                widget: "text"
 
-          - label: "Nos domaines d'accompagnement"
+          # NOS DOMAINES
+          - label: "Section « Nos domaines »"
             name: "domains"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Titre (H2)", name: "title", widget: "string" }
-              - { label: "Sur-titre (droite)", name: "eyebrow", widget: "string" }
-              - label: "Domaines"
+              - { label: "Sur-titre (côté droit)", name: "eyebrow", widget: "string" }
+              - label: "Domaines d'accompagnement"
                 name: "items"
                 widget: "list"
+                label_singular: "Domaine"
                 summary: "{{fields.number}} — {{fields.title}}"
                 fields:
-                  - { label: "Numéro", name: "number", widget: "string" }
-                  - { label: "Titre", name: "title", widget: "string" }
-                  - { label: "Description", name: "description", widget: "text" }
-                  - { label: "Lien (page détail)", name: "href", widget: "string", required: false }
+                  - { label: "Numéro", name: "number", widget: "string", hint: "Ex : 01, 02…" }
+                  - { label: "Titre du domaine", name: "title", widget: "string" }
+                  - { label: "Description courte", name: "description", widget: "text" }
+                  - { label: "Lien (page détail)", name: "href", widget: "string", required: false, hint: "Laisser vide si la page n'existe pas encore." }
 
-          - label: "Notre approche"
+          # NOTRE APPROCHE
+          - label: "Section « Notre approche »"
             name: "approach"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Sur-titre", name: "eyebrow", widget: "string" }
               - { label: "Sous-titre", name: "subtitle", widget: "text" }
-              - label: "Étapes (4)"
+              - label: "Les 4 étapes"
                 name: "steps"
                 widget: "list"
+                label_singular: "Étape"
                 summary: "{{fields.name}}"
                 fields:
-                  - { label: "Nom", name: "name", widget: "string" }
+                  - { label: "Nom de l'étape", name: "name", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
 
-          - label: "Pourquoi Pillet & Partners"
+          # POURQUOI NOUS
+          - label: "Section « Pourquoi Pillet & Partners »"
             name: "whyUs"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Sur-titre", name: "eyebrow", widget: "string" }
               - { label: "Titre (H2)", name: "title", widget: "string" }
-              - { label: "Portrait", name: "portrait", widget: "image" }
-              - { label: "Nom (italique dans la légende)", name: "portraitName", widget: "string" }
+              - label: "Portrait"
+                name: "portrait"
+                widget: "image"
+                hint: "Photo portrait verticale (600×800 px recommandé). Format JPG."
+                allow_multiple: false
+              - { label: "Nom (affiché en italique)", name: "portraitName", widget: "string" }
               - { label: "Rôle (suite de la légende)", name: "portraitRole", widget: "string" }
-              - label: "Raisons (4)"
+              - label: "Les 4 raisons"
                 name: "reasons"
                 widget: "list"
+                label_singular: "Raison"
                 summary: "{{fields.title}}"
                 fields:
                   - { label: "Titre", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
 
-          - label: "Pour qui ?"
+          # POUR QUI
+          - label: "Section « Pour qui ? »"
             name: "audience"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Sur-titre", name: "eyebrow", widget: "string" }
               - label: "Profils (pastilles)"
                 name: "items"
                 widget: "list"
+                label_singular: "Profil"
+                hint: "Chaque profil apparaît sous forme de pastille arrondie."
                 field: { label: "Profil", name: "label", widget: "string" }
 
+          # CTA FINAL
           - label: "Appel à l'action final"
             name: "finalCta"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Titre (H2)", name: "title", widget: "string" }
               - { label: "Texte", name: "text", widget: "text" }
@@ -143,16 +217,21 @@ collections:
                 name: "cta"
                 widget: "object"
                 fields:
-                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "Texte du bouton", name: "label", widget: "string" }
                   - { label: "Lien", name: "href", widget: "string" }
 
+  # ─────────────────────────────────────────────
+  # BLOG
+  # ─────────────────────────────────────────────
   - name: "blog"
-    label: "Articles"
+    label: "Articles de blog"
+    label_singular: "Article"
     folder: "src/content/blog"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{date}}"
     fields:
       - { label: "Titre", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string", required: false }
+      - { label: "Date de publication", name: "date", widget: "datetime", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Description (résumé)", name: "description", widget: "string", required: false, hint: "Courte description affichée dans la liste des articles." }
       - { label: "Contenu", name: "body", widget: "markdown" }
