@@ -190,6 +190,173 @@ collections:
             hint: "Résumé affiché sur Google (160 caractères max)."
 
   # ─────────────────────────────────────────────
+  # PAGES DE SERVICES
+  # ─────────────────────────────────────────────
+  - name: "services"
+    label: "Pages de services"
+    delete: false
+    editor:
+      preview: false
+    files:
+
+      - name: "transitions-strategiques"
+        label: "🔀 Transitions stratégiques"
+        file: "src/content/services/transitions-strategiques.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Titre — situations", name: "situationsTitle", widget: "string" }
+          - label: "Situations fréquentes"
+            name: "situations"
+            widget: "list"
+            field: { label: "Situation", name: "item", widget: "string" }
+          - { label: "Titre — services apportés", name: "servicesTitle", widget: "string" }
+          - label: "Ce que nous apportons"
+            name: "services"
+            widget: "list"
+            field: { label: "Service", name: "item", widget: "string" }
+          - { label: "Titre — résultats", name: "resultsTitle", widget: "string" }
+          - label: "Résultats"
+            name: "results"
+            widget: "list"
+            field: { label: "Résultat", name: "item", widget: "string" }
+
+      - name: "transformation-organisationnelle"
+        label: "🏗 Transformation organisationnelle"
+        file: "src/content/services/transformation-organisationnelle.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Titre — situations", name: "situationsTitle", widget: "string" }
+          - label: "Situations"
+            name: "situations"
+            widget: "list"
+            field: { label: "Situation", name: "item", widget: "string" }
+          - { label: "Titre — interventions", name: "servicesTitle", widget: "string" }
+          - label: "Nos interventions"
+            name: "services"
+            widget: "list"
+            field: { label: "Intervention", name: "item", widget: "string" }
+          - { label: "Titre — résultats", name: "resultsTitle", widget: "string" }
+          - label: "Résultats"
+            name: "results"
+            widget: "list"
+            field: { label: "Résultat", name: "item", widget: "string" }
+
+      - name: "transmission-gouvernance"
+        label: "🤝 Transmission & gouvernance"
+        file: "src/content/services/transmission-gouvernance.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Titre — contextes", name: "situationsTitle", widget: "string" }
+          - label: "Contextes d'intervention"
+            name: "situations"
+            widget: "list"
+            field: { label: "Contexte", name: "item", widget: "string" }
+          - { label: "Titre — accompagnement", name: "servicesTitle", widget: "string" }
+          - label: "Notre accompagnement"
+            name: "services"
+            widget: "list"
+            field: { label: "Action", name: "item", widget: "string" }
+          - { label: "Titre — résultats", name: "resultsTitle", widget: "string" }
+          - label: "Résultats"
+            name: "results"
+            widget: "list"
+            field: { label: "Résultat", name: "item", widget: "string" }
+
+      - name: "direction-strategique-externalisee"
+        label: "📋 Direction stratégique externalisée"
+        file: "src/content/services/direction-strategique-externalisee.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Titre — interventions", name: "situationsTitle", widget: "string" }
+          - label: "Interventions"
+            name: "situations"
+            widget: "list"
+            field: { label: "Intervention", name: "item", widget: "string" }
+          - { label: "Titre — apports", name: "servicesTitle", widget: "string" }
+          - label: "Ce que vous gagnez"
+            name: "services"
+            widget: "list"
+            field: { label: "Apport", name: "item", widget: "string" }
+          - { label: "Titre — formats", name: "formatsTitle", widget: "string" }
+          - label: "Formats d'intervention"
+            name: "formats"
+            widget: "list"
+            label_singular: "Format"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Format", name: "label", widget: "string", hint: "Ex : 1 jour par mois" }
+          - { label: "Titre — résultats", name: "resultsTitle", widget: "string" }
+          - label: "Résultats"
+            name: "results"
+            widget: "list"
+            field: { label: "Résultat", name: "item", widget: "string" }
+
+  # ─────────────────────────────────────────────
+  # PAGE À PROPOS
+  # ─────────────────────────────────────────────
+  - name: "about"
+    label: "Page À propos"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "about"
+        label: "👤 Line Pillet — À propos"
+        file: "src/content/about.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Phrase d'accroche", name: "intro", widget: "text" }
+          - { label: "Biographie", name: "bio", widget: "text" }
+          - { label: "Conviction (citation)", name: "conviction", widget: "text" }
+          - { label: "Titre — engagement", name: "roleTitle", widget: "string" }
+          - { label: "Texte — engagement", name: "roleText", widget: "text" }
+          - { label: "Titre — réseau", name: "networkTitle", widget: "string" }
+          - { label: "Intro réseau", name: "networkIntro", widget: "text" }
+          - label: "Domaines d'expertise du réseau"
+            name: "networkItems"
+            widget: "list"
+            field: { label: "Domaine", name: "item", widget: "string" }
+
+  # ─────────────────────────────────────────────
   # BLOG
   # ─────────────────────────────────────────────
   - name: "blog"

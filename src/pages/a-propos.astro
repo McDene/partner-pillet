@@ -1,0 +1,384 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+import data from '../content/about.json';
+---
+
+<BaseLayout title={data.seo.title} description={data.seo.description}>
+  <Header />
+  <main>
+
+    <!-- ── Hero band ── -->
+    <section class="about-hero">
+      <img src="/assets/pillet-partners-startup.jpg" alt="" aria-hidden="true" loading="eager" data-ken-burns />
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span class="eyebrow-line" data-animate="line" aria-hidden="true"></span>
+          <span class="eyebrow-text" data-animate style="--pp-delay:.07s">{data.eyebrow}</span>
+        </div>
+        <h1 data-animate style="--pp-delay:.16s">{data.title}</h1>
+      </div>
+    </section>
+
+    <!-- ── Bio + Portrait ── -->
+    <section class="about-bio">
+      <div class="bio-grid">
+        <div class="bio-text">
+          <p class="bio-intro" data-reveal>{data.intro}</p>
+          <p class="bio-body" data-reveal style="--pp-delay:.1s">{data.bio}</p>
+          <blockquote data-reveal style="--pp-delay:.2s">
+            <span class="quote-line" aria-hidden="true"></span>
+            <p>{data.conviction}</p>
+          </blockquote>
+        </div>
+        <figure class="bio-portrait" data-reveal style="--pp-delay:.12s">
+          <div class="portrait-frame">
+            <img src="/assets/line-pillet.jpg" alt="Line Pillet, Fondatrice & Managing Partner de Pillet & Partners" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="caption-line" aria-hidden="true"></span>
+            <span><em>Line Pillet</em> — Fondatrice &amp; Managing Partner</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── Engagement ── -->
+    <section class="about-role">
+      <div class="role-inner">
+        <div class="eyebrow-sec">
+          <span class="eyebrow-sec-line" data-reveal-line aria-hidden="true"></span>
+          <span class="eyebrow-sec-text" data-reveal style="--pp-delay:.06s">{data.roleTitle}</span>
+        </div>
+        <p class="role-text" data-reveal style="--pp-delay:.14s">{data.roleText}</p>
+      </div>
+    </section>
+
+    <!-- ── Réseau d'experts ── -->
+    <section class="about-network">
+      <div class="eyebrow-sec">
+        <span class="eyebrow-sec-line" data-reveal-line aria-hidden="true"></span>
+        <span class="eyebrow-sec-text" data-reveal style="--pp-delay:.06s">{data.networkTitle}</span>
+      </div>
+      <p class="network-intro" data-reveal style="--pp-delay:.14s">{data.networkIntro}</p>
+      <div class="network-pills">
+        {data.networkItems.map((item, i) => (
+          <span class="pill" data-reveal style={`--pp-delay: ${(i * 0.07).toFixed(2)}s`}>{item}</span>
+        ))}
+      </div>
+    </section>
+
+    <FinalCta
+      title="Parlons de votre situation."
+      text="Un premier échange permet souvent de clarifier rapidement les enjeux et les options possibles."
+      cta={{ label: "Planifier un entretien confidentiel", href: "/contact" }}
+    />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ─── Hero ──────────────────────────────────── */
+
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+}
+
+.about-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(14,58,92,.93) 0%,
+    rgba(14,58,92,.72) 42%,
+    rgba(14,58,92,.18) 74%,
+    rgba(14,58,92,0) 100%
+  );
+}
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  padding: 0 var(--pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 840px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.eyebrow-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand-2);
+  flex-shrink: 0;
+}
+
+.eyebrow-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand-2);
+}
+
+h1 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(40px, 5.56vw, 80px);
+  line-height: 1.04;
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  color: #fff;
+  margin: 0;
+}
+
+/* ─── Bio + Portrait ────────────────────────── */
+
+.about-bio {
+  padding: 96px var(--pad) 0;
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.bio-intro {
+  font-family: 'Spectral', serif;
+  font-size: clamp(20px, 1.87vw, 27px);
+  line-height: 1.52;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--navy);
+  margin: 0 0 28px;
+}
+
+.bio-body {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 0 40px;
+  max-width: 640px;
+}
+
+blockquote {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.quote-line {
+  display: block;
+  width: 2px;
+  height: 100%;
+  min-height: 56px;
+  background: var(--sand);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+blockquote p {
+  font-family: 'Spectral', serif;
+  font-size: clamp(18px, 1.6vw, 23px);
+  line-height: 1.44;
+  font-weight: 400;
+  color: var(--navy);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Portrait */
+
+.bio-portrait {
+  margin: 0;
+}
+
+.portrait-frame {
+  overflow: hidden;
+  border-radius: 3px;
+  height: 520px;
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  transition: transform 0.65s cubic-bezier(.25, .46, .45, .94);
+}
+
+.portrait-frame:hover img {
+  transform: scale(1.04) translateY(-1%);
+}
+
+figcaption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.caption-line {
+  display: block;
+  width: 26px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+
+figcaption span:last-child {
+  font-size: 15.5px;
+  color: var(--ink);
+}
+
+figcaption em {
+  font-family: 'Spectral', serif;
+  font-style: italic;
+}
+
+/* ─── Eyebrow pattern (sections) ───────────── */
+
+.eyebrow-sec {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.eyebrow-sec-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+
+.eyebrow-sec-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+/* ─── Engagement ────────────────────────────── */
+
+.about-role {
+  margin-top: 96px;
+}
+
+.role-inner {
+  background: var(--paper);
+  margin: 0 var(--pad);
+  border-radius: 4px;
+  padding: 72px 80px;
+}
+
+.role-text {
+  font-family: 'Spectral', serif;
+  font-size: clamp(20px, 2.08vw, 30px);
+  line-height: 1.48;
+  font-weight: 400;
+  color: var(--navy);
+  max-width: 780px;
+  margin: 0;
+}
+
+/* ─── Réseau ────────────────────────────────── */
+
+.about-network {
+  padding: 96px var(--pad) 0;
+}
+
+.network-intro {
+  font-size: 18.5px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+  max-width: 680px;
+  margin: 0 0 40px;
+}
+
+.network-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 860px;
+}
+
+.pill {
+  font-family: 'Spectral', serif;
+  font-size: clamp(15px, 1.32vw, 19px);
+  color: var(--navy);
+  padding: 11px 24px;
+  border: 1px solid rgba(26, 39, 51, 0.2);
+  border-radius: 999px;
+  transition: border-color 0.22s, background 0.22s;
+  cursor: default;
+}
+
+.pill:hover {
+  border-color: var(--navy);
+  background: rgba(14, 58, 92, 0.04);
+}
+
+/* ─── Responsive ────────────────────────────── */
+
+@media (max-width: 900px) {
+  .bio-grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .portrait-frame { height: 360px; }
+  .bio-body { max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .about-hero { height: 380px; }
+  .hero-overlay {
+    background: linear-gradient(180deg, rgba(14,58,92,.92) 0%, rgba(14,58,92,.75) 60%, rgba(14,58,92,.22) 100%);
+  }
+  .about-bio { padding-top: 72px; }
+  .about-role { margin-top: 72px; }
+  .role-inner { margin: 0; border-radius: 0; padding: 56px var(--pad); }
+  .about-network { padding-top: 72px; }
+}
+
+@media (max-width: 480px) {
+  .about-hero { height: 300px; }
+  h1 { font-size: clamp(34px, 8vw, 50px); }
+  .about-bio { padding-top: 56px; }
+  .bio-intro { font-size: 18px; }
+  .portrait-frame { height: 280px; }
+  .role-inner { padding: 40px 24px; }
+  .role-text { font-size: 18px; }
+  .about-network { padding-top: 56px; }
+  .network-intro { font-size: 16.5px; }
+}
+</style>

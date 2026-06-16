@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ServicePage from '../components/ServicePage.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+import data from '../content/services/transformation-organisationnelle.json';
+---
+
+<BaseLayout title={data.seo.title} description={data.seo.description}>
+  <Header />
+  <main>
+    <ServicePage
+      eyebrow={data.eyebrow}
+      title={data.title}
+      intro={data.intro}
+      situationsTitle={data.situationsTitle}
+      situations={data.situations}
+      servicesTitle={data.servicesTitle}
+      services={data.services}
+      resultsTitle={data.resultsTitle}
+      results={data.results}
+    />
+    <FinalCta
+      title="Votre organisation est en mutation ?"
+      text="Parlons de votre situation. Un premier échange permet de clarifier les enjeux et d'identifier les leviers d'action."
+      cta={{ label: "Planifier un entretien confidentiel", href: "/contact" }}
+    />
+  </main>
+  <Footer />
+</BaseLayout>

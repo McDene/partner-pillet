@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ServicePage from '../components/ServicePage.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+import data from '../content/services/transitions-strategiques.json';
+---
+
+<BaseLayout title={data.seo.title} description={data.seo.description}>
+  <Header />
+  <main>
+    <ServicePage
+      eyebrow={data.eyebrow}
+      title={data.title}
+      intro={data.intro}
+      situationsTitle={data.situationsTitle}
+      situations={data.situations}
+      servicesTitle={data.servicesTitle}
+      services={data.services}
+      resultsTitle={data.resultsTitle}
+      results={data.results}
+    />
+    <FinalCta
+      title="Vous traversez une transition stratégique ?"
+      text="Un premier échange permet souvent de clarifier rapidement les enjeux et les options possibles."
+      cta={{ label: "Planifier un entretien confidentiel", href: "/contact" }}
+    />
+  </main>
+  <Footer />
+</BaseLayout>
