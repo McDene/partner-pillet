@@ -12,9 +12,10 @@ import '../styles/tokens.css';
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "Pillet & Partners — Conseil stratégique en Suisse romande" } = Astro.props;
+const { title, description = "Pillet & Partners — Conseil stratégique en Suisse romande", noindex = false } = Astro.props;
 
 const siteUrl = "https://radiant-bavarois-2c95dd.netlify.app";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
@@ -79,6 +80,9 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <!-- Robots -->
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalUrl} />

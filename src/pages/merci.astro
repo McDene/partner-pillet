@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Message envoyé — Pillet & Partners"
+  description="Votre message a bien été reçu. Pillet & Partners vous recontactera dans les meilleurs délais."
+  noindex={true}
+>
+  <Header />
+
+  <main class="merci-page">
+    <div class="container">
+      <div class="check" aria-hidden="true">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="23" stroke="var(--sand)" stroke-width="1.5"/>
+          <path d="M14 24.5l7 7 13-14" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        <span class="eyebrow-text">Message envoyé</span>
+      </div>
+      <h1>Merci pour votre message.</h1>
+      <p class="lead">
+        Nous avons bien reçu votre demande et nous vous recontacterons
+        dans les meilleurs délais pour planifier un premier échange.
+      </p>
+      <a href="/" class="back-btn">← Retour à l'accueil</a>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.merci-page {
+  padding: 100px var(--pad) 120px;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 600px;
+}
+
+.check {
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.eyebrow-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+.eyebrow-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+h1 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(30px, 3vw, 46px);
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: -0.012em;
+  margin: 0;
+}
+
+.lead {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blue);
+  transition: color 0.18s;
+}
+
+.back-btn:hover {
+  color: var(--navy);
+}
+</style>

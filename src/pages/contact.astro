@@ -1,0 +1,319 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Contact — Pillet & Partners"
+  description="Planifiez un premier échange confidentiel avec Line Pillet. Cabinet de conseil stratégique en Suisse romande."
+>
+  <Header />
+
+  <main class="contact-page">
+    <div class="container">
+
+      <div class="intro">
+        <div class="eyebrow">
+          <span class="eyebrow-line" aria-hidden="true"></span>
+          <span class="eyebrow-text">Prenons contact</span>
+        </div>
+        <h1>Parlons de votre situation</h1>
+        <p class="lead">
+          Un premier échange permet souvent de clarifier rapidement les enjeux
+          et les options possibles. Contactez-nous pour planifier un entretien
+          confidentiel.
+        </p>
+      </div>
+
+      <div class="form-wrapper">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/merci"
+        >
+          <!-- Champ caché requis par Netlify Forms -->
+          <input type="hidden" name="form-name" value="contact" />
+
+          <!-- Honeypot anti-spam (caché) -->
+          <p class="visually-hidden">
+            <label>Ne pas remplir : <input name="bot-field" tabindex="-1" /></label>
+          </p>
+
+          <div class="fields">
+            <div class="field">
+              <label for="name">Nom complet <span class="required" aria-hidden="true">*</span></label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Line Dupont"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="field">
+              <label for="email">Adresse e-mail <span class="required" aria-hidden="true">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="vous@exemple.ch"
+                required
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="field">
+              <label for="phone">Téléphone <span class="optional">(optionnel)</span></label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+41 79 000 00 00"
+                autocomplete="tel"
+              />
+            </div>
+
+            <div class="field field--full">
+              <label for="subject">Sujet <span class="required" aria-hidden="true">*</span></label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Sélectionnez un sujet…</option>
+                <option value="Transitions stratégiques">Transitions stratégiques</option>
+                <option value="Transformation organisationnelle">Transformation organisationnelle</option>
+                <option value="Transmission & gouvernance">Transmission &amp; gouvernance</option>
+                <option value="Direction stratégique externalisée">Direction stratégique externalisée</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+
+            <div class="field field--full">
+              <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Décrivez brièvement votre situation et ce pour quoi vous souhaitez être accompagné·e…"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <p class="confidentiality">
+              Vos informations sont traitées de manière strictement confidentielle.
+            </p>
+            <button type="submit" class="submit-btn">
+              Envoyer ma demande
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+.contact-page {
+  padding: 80px var(--pad) 0;
+  min-height: 60vh;
+}
+
+.container {
+  max-width: 860px;
+}
+
+/* ── Intro ── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.eyebrow-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+.eyebrow-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+h1 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: -0.012em;
+  margin: 0;
+}
+
+.lead {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 620px;
+}
+
+/* ── Form ── */
+.form-wrapper {
+  margin-top: 56px;
+  padding-bottom: 96px;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 40px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
+.required {
+  color: var(--blue);
+  margin-left: 2px;
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 15.5px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid rgba(26, 39, 51, 0.22);
+  border-radius: 2px;
+  padding: 13px 16px;
+  width: 100%;
+  transition: border-color 0.18s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2352606B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(26, 94, 134, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(82, 96, 107, 0.55);
+}
+
+/* ── Footer du formulaire ── */
+.form-footer {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.confidentiality {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  opacity: 0.8;
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 17px 36px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.18s;
+  white-space: nowrap;
+}
+
+.submit-btn:hover {
+  background: var(--navy);
+}
+
+/* ── Honeypot ── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .fields {
+    grid-template-columns: 1fr;
+  }
+  .form-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>

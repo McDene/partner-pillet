@@ -11,6 +11,7 @@ export default defineConfig({
     sitemap({
       changefreq: 'monthly',
       priority: 0.9,
+      filter: (page) => !page.includes('/merci'),
     }),
   ],
 });
