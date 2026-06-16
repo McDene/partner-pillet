@@ -8,9 +8,9 @@ const { title, text, cta } = Astro.props;
 ---
 
 <section class="final-cta">
-  <h2>{title}</h2>
-  <p>{text}</p>
-  <a href={cta.href} class="cta-btn">{cta.label}</a>
+  <h2 data-reveal>{title}</h2>
+  <p data-reveal style="--pp-delay:.12s">{text}</p>
+  <a href={cta.href} class="cta-btn" data-reveal style="--pp-delay:.22s">{cta.label}</a>
 </section>
 
 <style>
@@ -49,11 +49,12 @@ p {
   font-weight: 600;
   padding: 18px 34px;
   border-radius: 2px;
-  transition: background 0.18s;
+  transition: background 0.2s, transform 0.22s cubic-bezier(.22, 1, .36, 1);
 }
 
 .cta-btn:hover {
   background: var(--navy);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {

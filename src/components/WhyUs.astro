@@ -18,11 +18,11 @@ const { eyebrow, title, portrait, portraitName, portraitRole, reasons } = Astro.
   <div class="grid">
     <div class="col-left">
       <div class="eyebrow">
-        <span class="eyebrow-line" aria-hidden="true"></span>
-        <span class="eyebrow-text">{eyebrow}</span>
+        <span class="eyebrow-line" data-reveal-line aria-hidden="true"></span>
+        <span class="eyebrow-text" data-reveal style="--pp-delay:.07s">{eyebrow}</span>
       </div>
-      <h2>{title}</h2>
-      <figure>
+      <h2 data-reveal style="--pp-delay:.14s">{title}</h2>
+      <figure data-reveal style="--pp-delay:.22s">
         <div class="portrait-frame">
           <img src={portrait} alt={`${portraitName}, ${portraitRole}`} loading="lazy" />
         </div>
@@ -33,8 +33,8 @@ const { eyebrow, title, portrait, portraitName, portraitRole, reasons } = Astro.
       </figure>
     </div>
     <div class="reasons">
-      {reasons.map(reason => (
-        <div class="reason">
+      {reasons.map((reason, i) => (
+        <div class="reason" data-reveal style={`--pp-delay: ${(i * 0.1).toFixed(2)}s`}>
           <h3>{reason.title}</h3>
           <p>{reason.description}</p>
         </div>
@@ -104,6 +104,11 @@ figure {
   height: 100%;
   object-fit: cover;
   object-position: center 18%;
+  transition: transform 0.65s cubic-bezier(.25, .46, .45, .94);
+}
+
+.portrait-frame:hover img {
+  transform: scale(1.04) translateY(-1%);
 }
 
 figcaption {

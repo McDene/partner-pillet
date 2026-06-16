@@ -13,12 +13,12 @@ const { eyebrow, title, titleAccent, titleEnd, subtitle, ctaPrimary, ctaSecondar
 
 <section class="hero">
   <div class="eyebrow">
-    <span class="eyebrow-line" aria-hidden="true"></span>
-    <span class="eyebrow-text">{eyebrow}</span>
+    <span class="eyebrow-line" data-animate="line" aria-hidden="true"></span>
+    <span class="eyebrow-text" data-animate style="--pp-delay:.07s">{eyebrow}</span>
   </div>
-  <h1>{title} <em>{titleAccent}</em> {titleEnd}</h1>
-  <p class="subtitle">{subtitle}</p>
-  <div class="ctas">
+  <h1 data-animate style="--pp-delay:.14s">{title} <em>{titleAccent}</em> {titleEnd}</h1>
+  <p class="subtitle" data-animate style="--pp-delay:.26s">{subtitle}</p>
+  <div class="ctas" data-animate style="--pp-delay:.38s">
     <a href={ctaPrimary.href} class="cta-primary">{ctaPrimary.label}</a>
     <a href={ctaSecondary.href} class="cta-secondary">
       {ctaSecondary.label}<span class="arrow" aria-hidden="true">→</span>
@@ -97,11 +97,12 @@ h1 em {
   font-weight: 600;
   padding: 17px 30px;
   border-radius: 2px;
-  transition: background 0.18s;
+  transition: background 0.2s, transform 0.22s cubic-bezier(.22, 1, .36, 1);
 }
 
 .cta-primary:hover {
   background: var(--navy);
+  transform: translateY(-2px);
 }
 
 .cta-secondary {
@@ -114,18 +115,24 @@ h1 em {
   padding: 17px 26px;
   border-radius: 2px;
   border: 1px solid rgba(26, 39, 51, 0.22);
-  transition: border-color 0.18s, color 0.18s;
+  transition: border-color 0.2s, color 0.2s, transform 0.22s cubic-bezier(.22, 1, .36, 1);
 }
 
 .cta-secondary:hover {
   border-color: var(--navy);
   color: var(--navy);
+  transform: translateY(-2px);
 }
 
 .arrow {
   font-size: 18px;
   line-height: 1;
   color: var(--sand);
+  transition: transform 0.25s cubic-bezier(.22, 1, .36, 1);
+}
+
+.cta-secondary:hover .arrow {
+  transform: translateX(4px);
 }
 
 @media (max-width: 768px) {

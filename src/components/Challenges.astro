@@ -14,16 +14,16 @@ const { eyebrow, title, intro, introAccent, items, conclusion } = Astro.props;
   <div class="grid">
     <div class="col-left">
       <div class="eyebrow">
-        <span class="eyebrow-line" aria-hidden="true"></span>
-        <span class="eyebrow-text">{eyebrow}</span>
+        <span class="eyebrow-line" data-reveal-line aria-hidden="true"></span>
+        <span class="eyebrow-text" data-reveal style="--pp-delay:.07s">{eyebrow}</span>
       </div>
-      <h2>{title}</h2>
-      <p class="intro">{intro} <em>{introAccent}</em></p>
+      <h2 data-reveal style="--pp-delay:.14s">{title}</h2>
+      <p class="intro" data-reveal style="--pp-delay:.22s">{intro} <em>{introAccent}</em></p>
     </div>
     <div class="col-right">
       <ul>
         {items.map((item, i) => (
-          <li>
+          <li data-reveal style={`--pp-delay: ${(i * 0.08).toFixed(2)}s`}>
             <span class="number">{i + 1}</span>
             <span class="text">{item}</span>
           </li>
@@ -31,7 +31,7 @@ const { eyebrow, title, intro, introAccent, items, conclusion } = Astro.props;
       </ul>
     </div>
   </div>
-  <p class="conclusion">{conclusion}</p>
+  <p class="conclusion" data-reveal>{conclusion}</p>
 </section>
 
 <style>

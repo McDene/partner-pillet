@@ -13,14 +13,14 @@ const { eyebrow, subtitle, steps } = Astro.props;
 
 <section class="approach" id="approche">
   <div class="eyebrow">
-    <span class="eyebrow-line" aria-hidden="true"></span>
-    <span class="eyebrow-text">{eyebrow}</span>
+    <span class="eyebrow-line" data-reveal-line aria-hidden="true"></span>
+    <span class="eyebrow-text" data-reveal style="--pp-delay:.07s">{eyebrow}</span>
   </div>
-  <h2>Clarifier. <span class="teal">Aligner.</span> Activer. <span class="sand">Ancrer.</span></h2>
-  <p class="subtitle">{subtitle}</p>
+  <h2 data-reveal style="--pp-delay:.14s">Clarifier. <span class="teal">Aligner.</span> Activer. <span class="sand">Ancrer.</span></h2>
+  <p class="subtitle" data-reveal style="--pp-delay:.22s">{subtitle}</p>
   <div class="steps">
     {steps.map((step, i) => (
-      <div class="step">
+      <div class="step" data-reveal style={`--pp-delay: ${(i * 0.1).toFixed(2)}s`}>
         <span class="step-label">Étape {i + 1}</span>
         <h3>{step.name}</h3>
         <p>{step.description}</p>
@@ -84,8 +84,27 @@ h2 .sand { color: var(--sand); }
 }
 
 .step {
-  border-top: 2px solid var(--navy);
-  padding-top: 22px;
+  position: relative;
+  padding-top: 24px;
+}
+
+/* Border-top draws from left when step is revealed */
+.step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--navy);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.52s cubic-bezier(.22, 1, .36, 1);
+  transition-delay: calc(var(--pp-delay, 0s) + 0.28s);
+}
+
+.step.revealed::before {
+  transform: scaleX(1);
 }
 
 .step-label {

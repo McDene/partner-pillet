@@ -15,12 +15,12 @@ const { title, eyebrow, items } = Astro.props;
 
 <section class="domains" id="domaines">
   <div class="header">
-    <h2>{title}</h2>
-    <span class="eyebrow-right">{eyebrow}</span>
+    <h2 data-reveal>{title}</h2>
+    <span class="eyebrow-right" data-reveal style="--pp-delay:.1s">{eyebrow}</span>
   </div>
   <ul>
     {items.map((item, i) => (
-      <li class={i === items.length - 1 ? 'last' : ''}>
+      <li class={i === items.length - 1 ? 'last' : ''} data-reveal style={`--pp-delay: ${(i * 0.07).toFixed(2)}s`}>
         <span class="number">{item.number}</span>
         <div class="content">
           <h3>{item.title}</h3>
@@ -76,10 +76,16 @@ li {
   gap: 30px;
   padding: 30px 4px;
   border-top: 1px solid rgba(26, 39, 51, 0.13);
+  transition: background 0.22s;
+  border-radius: 2px;
 }
 
 li.last {
   border-bottom: 1px solid rgba(26, 39, 51, 0.13);
+}
+
+li:hover {
+  background: rgba(14, 58, 92, 0.028);
 }
 
 .number {
@@ -115,6 +121,11 @@ p {
 .arrow {
   font-size: 20px;
   color: var(--blue);
+  transition: transform 0.28s cubic-bezier(.22, 1, .36, 1);
+}
+
+li:hover .arrow {
+  transform: translateX(6px);
 }
 
 @media (max-width: 900px) {

@@ -10,11 +10,11 @@ const { eyebrow, quote, quoteAccent, quoteEnd, image } = Astro.props;
 ---
 
 <section class="signature-band">
-  <img src={image} alt="Coupe d'un tronc — les cernes de croissance" loading="lazy" />
+  <img src={image} alt="Coupe d'un tronc — les cernes de croissance" loading="lazy" data-ken-burns />
   <div class="overlay" aria-hidden="true"></div>
-  <div class="content">
+  <div class="content" data-reveal>
     <div class="eyebrow">
-      <span class="eyebrow-line" aria-hidden="true"></span>
+      <span class="eyebrow-line" data-reveal-line style="--pp-delay:.1s" aria-hidden="true"></span>
       <span class="eyebrow-text">{eyebrow}</span>
     </div>
     <p class="quote">
