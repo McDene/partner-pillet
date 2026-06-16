@@ -9,60 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
-      /* ── Base ── */
       *, *::before, *::after { box-sizing: border-box; }
 
       body {
         margin: 0;
         font-family: 'Inter', sans-serif;
-        background: #f7f5f0;
       }
-
-      /* ── Splash screen pendant le chargement ── */
-      #cms-loading {
-        position: fixed;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        background: #0E3A5C;
-        z-index: 9999;
-        transition: opacity 0.4s;
-      }
-      #cms-loading.hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
-      #cms-loading img {
-        width: 64px;
-        height: 64px;
-        object-fit: contain;
-        object-position: top;
-        filter: brightness(0) invert(1);
-        opacity: 0.9;
-      }
-      #cms-loading p {
-        font-family: 'Spectral', serif;
-        font-size: 18px;
-        font-weight: 400;
-        letter-spacing: 0.12em;
-        color: rgba(255,255,255,0.7);
-        margin: 0;
-      }
-      #cms-loading .dot {
-        display: inline-block;
-        animation: blink 1.4s infinite both;
-      }
-      #cms-loading .dot:nth-child(2) { animation-delay: 0.2s; }
-      #cms-loading .dot:nth-child(3) { animation-delay: 0.4s; }
-      @keyframes blink {
-        0%, 80%, 100% { opacity: 0; }
-        40% { opacity: 1; }
-      }
-
-      /* ── Overrides Decap CMS ── */
 
       /* Typographie globale */
       #nc-root,
@@ -73,23 +25,7 @@
         font-family: 'Inter', sans-serif !important;
       }
 
-      /* Boutons primaires → bleu marine Pillet */
-      #nc-root button[class*="AppHeader"],
-      #nc-root button[data-testid="sidebar-collection-link"],
-      #nc-root [class*="ToolbarButton"],
-      #nc-root [class*="PrimaryButton"],
-      #nc-root [class*="StyledAuthButton"] {
-        font-family: 'Inter', sans-serif !important;
-      }
-
-      /* Liens actifs dans la sidebar */
-      #nc-root nav a[class*="active"],
-      #nc-root nav [class*="active"] {
-        border-left-color: #B7A079 !important;
-        color: #0E3A5C !important;
-      }
-
-      /* Titres H1 dans le CMS → Spectral */
+      /* Titres → Spectral */
       #nc-root h1,
       #nc-root [class*="CardHeading"],
       #nc-root [class*="ListCardTitle"] {
@@ -107,14 +43,14 @@
         letter-spacing: 0.04em;
       }
 
-      /* Inputs focus → couleur accent */
+      /* Focus inputs → bleu Pillet */
       #nc-root input:focus,
       #nc-root textarea:focus {
         outline-color: #1A5E86 !important;
         border-color: #1A5E86 !important;
       }
 
-      /* Scrollbar */
+      /* Scrollbar discrète */
       #nc-root * {
         scrollbar-width: thin;
         scrollbar-color: #B7A079 #f0ece4;
@@ -122,30 +58,6 @@
     </style>
   </head>
   <body>
-
-    <!-- Splash screen de chargement -->
-    <div id="cms-loading">
-      <img src="/assets/logo.png" alt="Pillet & Partners" />
-      <p>PILLET&nbsp;&amp;&nbsp;PARTNERS
-        <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
-      </p>
-    </div>
-
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
-    <script>
-      // Masque le splash une fois le CMS chargé
-      if (typeof CMS !== 'undefined') {
-        CMS.init();
-      }
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          var splash = document.getElementById('cms-loading');
-          if (splash) splash.classList.add('hidden');
-          setTimeout(function () { if (splash) splash.remove(); }, 500);
-        }, 800);
-      });
-    </script>
-
   </body>
 </html>
