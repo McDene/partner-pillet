@@ -1,0 +1,10 @@
+{
+  "eyebrow": "Notre approche",
+  "subtitle": "Une méthode structurée pour transformer les intentions stratégiques en changements concrets et durables.",
+  "steps": [
+    { "name": "Clarifier", "description": "Comprendre les enjeux réels et identifier les priorités." },
+    { "name": "Aligner", "description": "Créer une cohérence entre vision, gouvernance, leadership et organisation." },
+    { "name": "Activer", "description": "Transformer les décisions en actions." },
+    { "name": "Ancrer", "description": "Faire vivre les changements dans la durée." }
+  ]
+}
