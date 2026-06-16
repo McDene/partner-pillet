@@ -105,7 +105,7 @@ const jsonLd = {
               io.unobserve(e.target);
             }
           });
-        }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px 0px 0px' });
         document.querySelectorAll('[data-reveal], [data-reveal-line], [data-ken-burns]').forEach(function (el) {
           io.observe(el);
         });

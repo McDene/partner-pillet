@@ -1,8 +1,8 @@
 ---
 const navLinks = [
-  { label: 'Approche', href: '#approche' },
-  { label: 'Domaines', href: '#domaines' },
-  { label: 'Line Pillet', href: '#pourquoi' },
+  { label: 'Approche', href: '/#approche' },
+  { label: 'Domaines', href: '/#domaines' },
+  { label: 'Line Pillet', href: '/#pourquoi' },
   { label: 'Contact', href: '/contact' },
 ];
 ---
@@ -120,5 +120,7 @@ nav a:hover::after {
 @media (max-width: 400px) {
   .brand-mark { width: 36px; height: 36px; background-size: 60px 60px; }
   .brand-name { font-size: 15px; }
+  nav { gap: 10px 16px; }
+  nav a { font-size: 12.5px; }
 }
 </style>

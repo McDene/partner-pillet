@@ -1,0 +1,170 @@
+# Decap CMS — configuration pour Pillet & Partners
+#
+# À placer dans `public/admin/config.yml`. Accompagné de `public/admin/index.html` (point d'entrée Decap).
+# Cette config modélise la page d'accueil (V1) en champs éditables par la cliente, alignés sur le
+# schéma Astro de STACK_ASTRO.md §4.
+#
+# --- Authentification ---
+# Option A (recommandée Netlify) : Netlify Identity + Git Gateway.
+#   backend ci-dessous. Activer Identity + Git Gateway dans le dashboard Netlify.
+# Option B : GitHub OAuth direct (backend: github, repo: 'org/repo').
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Dossier où Decap dépose les médias uploadés (doit exister dans public/)
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+# Langue de l'interface
+locale: "fr"
+
+# Message de commit lisibles dans l'historique Git
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+  - name: "home"
+    label: "Page d'accueil"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "index"
+        label: "Contenu de la page d'accueil"
+        file: "src/content/home/index.json"
+        fields:
+
+          # ---- SEO ----
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre (balise <title>)", name: "title", widget: "string" }
+              - { label: "Méta description", name: "description", widget: "text" }
+
+          # ---- HERO ----
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", default: "Conseil stratégique · Suisse romande" }
+              - { label: "Titre (H1) — début", name: "title", widget: "string", hint: "Le mot mis en valeur est saisi séparément ci-dessous." }
+              - { label: "Titre — mot mis en valeur", name: "titleAccent", widget: "string", default: "étapes décisives" }
+              - { label: "Titre — fin", name: "titleEnd", widget: "string", default: "de leur entreprise" }
+              - { label: "Sous-titre", name: "subtitle", widget: "text" }
+              - label: "Bouton principal"
+                name: "ctaPrimary"
+                widget: "object"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string", default: "Planifier un premier échange confidentiel" }
+                  - { label: "Lien", name: "href", widget: "string", default: "/contact" }
+              - label: "Bouton secondaire"
+                name: "ctaSecondary"
+                widget: "object"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string", default: "Demander une offre d'accompagnement" }
+                  - { label: "Lien", name: "href", widget: "string", default: "/contact" }
+
+          # ---- BANDEAU SIGNATURE ----
+          - label: "Bandeau signature (coupe de tronc)"
+            name: "signature"
+            widget: "object"
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", default: "Notre signature" }
+              - { label: "Citation — début", name: "quote", widget: "string" }
+              - { label: "Citation — mots mis en valeur", name: "quoteAccent", widget: "string", default: "cernes d'un arbre" }
+              - { label: "Citation — fin", name: "quoteEnd", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+
+          # ---- LES DÉFIS ----
+          - label: "Les défis"
+            name: "challenges"
+            widget: "object"
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", default: "Le contexte" }
+              - { label: "Titre (H2)", name: "title", widget: "string" }
+              - { label: "Introduction", name: "intro", widget: "text" }
+              - label: "Liste des défis"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.text}}"
+                field: { label: "Défi", name: "text", widget: "string" }
+              - { label: "Phrase de conclusion", name: "conclusion", widget: "text" }
+
+          # ---- NOS DOMAINES ----
+          - label: "Nos domaines d'accompagnement"
+            name: "domains"
+            widget: "object"
+            fields:
+              - { label: "Titre (H2)", name: "title", widget: "string", default: "Nos domaines d'accompagnement" }
+              - { label: "Sur-titre (droite)", name: "eyebrow", widget: "string", default: "Quatre expertises" }
+              - label: "Domaines"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.number}} — {{fields.title}}"
+                fields:
+                  - { label: "Numéro", name: "number", widget: "string" }
+                  - { label: "Titre", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Lien (page détail)", name: "href", widget: "string", required: false }
+
+          # ---- NOTRE APPROCHE ----
+          - label: "Notre approche"
+            name: "approach"
+            widget: "object"
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", default: "Notre approche" }
+              - { label: "Sous-titre", name: "subtitle", widget: "text" }
+              - label: "Étapes (4)"
+                name: "steps"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: "Nom", name: "name", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          # ---- POURQUOI NOUS ----
+          - label: "Pourquoi Pillet & Partners"
+            name: "whyUs"
+            widget: "object"
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", default: "Pourquoi nous" }
+              - { label: "Titre (H2)", name: "title", widget: "string", default: "Pourquoi Pillet & Partners ?" }
+              - { label: "Portrait", name: "portrait", widget: "image" }
+              - { label: "Légende du portrait", name: "portraitCaption", widget: "string", default: "Line Pillet — Fondatrice & Managing Partner" }
+              - label: "Raisons (4)"
+                name: "reasons"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Titre", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          # ---- POUR QUI ----
+          - label: "Pour qui ?"
+            name: "audience"
+            widget: "object"
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", default: "Pour qui ?" }
+              - label: "Profils"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.label}}"
+                field: { label: "Profil", name: "label", widget: "string" }
+
+          # ---- CTA FINAL ----
+          - label: "Appel à l'action final"
+            name: "finalCta"
+            widget: "object"
+            fields:
+              - { label: "Titre (H2)", name: "title", widget: "string", default: "Vous préparez une étape décisive ?" }
+              - { label: "Texte", name: "text", widget: "text" }
+              - label: "Bouton"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string", default: "Planifier un entretien confidentiel" }
+                  - { label: "Lien", name: "href", widget: "string", default: "/contact" }

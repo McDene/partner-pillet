@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pillet &amp; Partners — Aperçu V1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0E3A5C;--blue:#1A5E86;--cyan:#2FA8D6;--teal:#169A9E;--teal-deep:#0F6E72;
+    --sand:#B7A079;--sand-2:#C9B896;--sand-soft:#EDE6D8;--paper:#FAF8F3;--paper-cool:#F4F6F7;
+    --ink:#1A2733;--ink-soft:#52606B;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#fff;}
+  .brand-mark{background:url('assets/logo.png') no-repeat top center;flex:0 0 auto;}
+  .v1{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;}
+  .v1 .serif{font-family:'Spectral',serif;}
+  .v1 a{text-decoration:none;color:inherit;}
+  .v1-cta1,.v1-cta2{transition:background .18s,color .18s,border-color .18s;cursor:pointer;}
+  .v1-cta1:hover{background:var(--navy);}
+  .v1-cta2:hover{border-color:var(--navy);color:var(--navy);}
+  #frame{position:relative;width:100%;overflow-x:hidden;}
+  #page{position:absolute;top:0;left:0;width:1440px;transform-origin:top left;}
+</style>
+</head>
+<body>
+<div id="frame"><div id="page"><div id="root"></div></div></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="variation1.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('root')).render(<window.Variation1 />);
+</script>
+<script>
+  function fit(){
+    var vw = document.documentElement.clientWidth;
+    var page = document.getElementById('page');
+    var frame = document.getElementById('frame');
+    var s = Math.min(1, vw / 1440);
+    page.style.transform = 'scale(' + s + ')';
+    page.style.left = Math.max(0, (vw - 1440 * s) / 2) + 'px';
+    frame.style.height = (page.offsetHeight * s) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  // re-fit as fonts/images settle and the React tree mounts
+  var t = setInterval(fit, 250);
+  setTimeout(function(){ clearInterval(t); }, 4000);
+  window.addEventListener('load', fit);
+  document.fonts && document.fonts.ready.then(fit);
+  fit();
+</script>
+</body>
+</html>
