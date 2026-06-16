@@ -1,0 +1,87 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true"></div>
+    <span class="brand-name">PILLET&nbsp;&amp;&nbsp;PARTNERS</span>
+  </div>
+  <p class="tagline">Conseil stratégique · Suisse romande</p>
+  <div class="links">
+    <a href="/mentions-legales">Mentions légales</a>
+    <a href="/confidentialite">Confidentialité</a>
+  </div>
+  <p class="copy">&copy; {year} Pillet &amp; Partners</p>
+</footer>
+
+<style>
+footer {
+  background: var(--navy);
+  padding: 56px var(--pad);
+  color: #fff;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  background-image: url('/assets/logo.png');
+  background-size: 60px 60px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
+
+.brand-name {
+  font-family: 'Spectral', serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #fff;
+}
+
+.tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 32px;
+}
+
+.links {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.links a {
+  font-size: 14px;
+  color: rgba(255,255,255,.7);
+  transition: color 0.18s;
+}
+
+.links a:hover {
+  color: #fff;
+}
+
+.copy {
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+}
+
+@media (max-width: 768px) {
+  footer { padding-top: 44px; padding-bottom: 44px; }
+  .tagline { margin-bottom: 24px; }
+}
+
+@media (max-width: 400px) {
+  footer { padding-top: 36px; padding-bottom: 36px; }
+  .links { gap: 20px; }
+}
+</style>

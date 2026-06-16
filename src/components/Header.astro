@@ -1,0 +1,95 @@
+---
+const navLinks = [
+  { label: 'Approche', href: '#approche' },
+  { label: 'Domaines', href: '#domaines' },
+  { label: 'Line Pillet', href: '#pourquoi' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header>
+  <a class="brand" href="/">
+    <div class="brand-mark" aria-hidden="true"></div>
+    <span class="brand-name">PILLET&nbsp;&amp;&nbsp;PARTNERS</span>
+  </a>
+  <nav>
+    {navLinks.map(link => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 34px var(--pad) 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  background-image: url('/assets/logo.png');
+  background-size: 76px 76px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: 'Spectral', serif;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--navy);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+nav a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: color 0.18s;
+}
+
+nav a:hover {
+  color: var(--navy);
+}
+
+@media (max-width: 768px) {
+  header { padding-top: 24px; }
+  nav { gap: 24px; }
+  nav a { font-size: 14px; }
+  .brand-name { font-size: 17px; }
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  nav {
+    gap: 14px 20px;
+    flex-wrap: wrap;
+  }
+  nav a { font-size: 13.5px; }
+}
+
+@media (max-width: 400px) {
+  .brand-mark { width: 36px; height: 36px; background-size: 60px 60px; }
+  .brand-name { font-size: 15px; }
+}
+</style>

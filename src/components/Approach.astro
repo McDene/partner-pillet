@@ -1,0 +1,131 @@
+---
+interface Step {
+  name: string;
+  description: string;
+}
+interface Props {
+  eyebrow: string;
+  subtitle: string;
+  steps: Step[];
+}
+const { eyebrow, subtitle, steps } = Astro.props;
+---
+
+<section class="approach" id="approche">
+  <div class="eyebrow">
+    <span class="eyebrow-line" aria-hidden="true"></span>
+    <span class="eyebrow-text">{eyebrow}</span>
+  </div>
+  <h2>Clarifier. <span class="teal">Aligner.</span> Activer. <span class="sand">Ancrer.</span></h2>
+  <p class="subtitle">{subtitle}</p>
+  <div class="steps">
+    {steps.map((step, i) => (
+      <div class="step">
+        <span class="step-label">Étape {i + 1}</span>
+        <h3>{step.name}</h3>
+        <p>{step.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+.approach {
+  padding: 100px var(--pad) 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.eyebrow-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+
+.eyebrow-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+h2 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(28px, 3.19vw, 46px);
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+h2 .teal { color: var(--teal); }
+h2 .sand { color: var(--sand); }
+
+.subtitle {
+  margin: 24px 0 56px;
+  font-size: 18.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 680px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+}
+
+.step {
+  border-top: 2px solid var(--navy);
+  padding-top: 22px;
+}
+
+.step-label {
+  font-family: 'Spectral', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--sand);
+  display: block;
+  margin-bottom: 14px;
+}
+
+h3 {
+  font-family: 'Spectral', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--navy);
+  margin: 0;
+}
+
+p {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .steps { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .approach { padding-top: 64px; }
+  .subtitle { font-size: 16px; margin-bottom: 40px; }
+}
+
+@media (max-width: 540px) {
+  .steps { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 400px) {
+  .approach { padding-top: 44px; }
+}
+</style>

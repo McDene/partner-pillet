@@ -1,0 +1,153 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  introAccent: string;
+  items: string[];
+  conclusion: string;
+}
+const { eyebrow, title, intro, introAccent, items, conclusion } = Astro.props;
+---
+
+<section class="challenges" id="defis">
+  <div class="grid">
+    <div class="col-left">
+      <div class="eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        <span class="eyebrow-text">{eyebrow}</span>
+      </div>
+      <h2>{title}</h2>
+      <p class="intro">{intro} <em>{introAccent}</em></p>
+    </div>
+    <div class="col-right">
+      <ul>
+        {items.map((item, i) => (
+          <li>
+            <span class="number">{i + 1}</span>
+            <span class="text">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <p class="conclusion">{conclusion}</p>
+</section>
+
+<style>
+.challenges {
+  padding: 92px var(--pad) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.eyebrow-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+
+.eyebrow-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+h2 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(28px, 2.92vw, 42px);
+  line-height: 1.12;
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.intro {
+  margin: 28px 0 0;
+  font-size: 18.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 520px;
+}
+
+.intro em {
+  font-family: 'Spectral', serif;
+  font-style: italic;
+  color: var(--navy);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  gap: 22px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-top: 1px solid rgba(26, 39, 51, 0.13);
+}
+
+.number {
+  font-family: 'Spectral', serif;
+  font-size: 16px;
+  color: var(--sand);
+  font-style: italic;
+  flex: 0 0 auto;
+  width: 22px;
+}
+
+.text {
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.conclusion {
+  margin-top: 56px;
+  font-family: 'Spectral', serif;
+  font-size: clamp(18px, 1.74vw, 25px);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--navy);
+  max-width: 900px;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .challenges { padding-top: 60px; }
+  .intro { font-size: 17px; }
+  .text { font-size: 17px; }
+  .conclusion { font-size: clamp(17px, 3.5vw, 22px); margin-top: 40px; }
+}
+
+@media (max-width: 400px) {
+  .challenges { padding-top: 44px; }
+}
+</style>

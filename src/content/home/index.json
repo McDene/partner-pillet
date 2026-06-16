@@ -1,0 +1,127 @@
+{
+  "seo": {
+    "title": "Pillet & Partners — Conseil stratégique en Suisse romande",
+    "description": "Accompagner les dirigeants dans les étapes décisives de leur entreprise. Croissance, transformation, transmission : conseil stratégique en Suisse romande."
+  },
+  "hero": {
+    "eyebrow": "Conseil stratégique · Suisse romande",
+    "title": "Accompagner les dirigeants dans les",
+    "titleAccent": "étapes décisives",
+    "titleEnd": "de leur entreprise",
+    "subtitle": "Croissance, transformation, transmission, repositionnement ou évolution de la gouvernance : nous aidons les dirigeant·e·s et leurs équipes à aligner stratégie, organisation et dynamiques humaines pour transformer leurs ambitions en résultats durables.",
+    "ctaPrimary": {
+      "label": "Planifier un premier échange confidentiel",
+      "href": "/contact"
+    },
+    "ctaSecondary": {
+      "label": "Demander une offre d'accompagnement",
+      "href": "/contact"
+    }
+  },
+  "signature": {
+    "eyebrow": "Notre signature",
+    "quote": "Comme les",
+    "quoteAccent": "cernes d'un arbre",
+    "quoteEnd": ", chaque décision inscrit l'entreprise dans la durée.",
+    "image": "/assets/wood-rings.png"
+  },
+  "challenges": {
+    "eyebrow": "Le contexte",
+    "title": "Les défis que rencontrent les entreprises en croissance",
+    "intro": "Lorsque l'entreprise évolue, les enjeux se multiplient. Ces situations sont naturelles ; elles deviennent problématiques lorsqu'elles créent un",
+    "introAccent": "écart entre la vision des dirigeants et la réalité du terrain.",
+    "items": [
+      "les décisions deviennent plus complexes",
+      "les responsabilités se chevauchent",
+      "les équipes perdent en visibilité",
+      "la gouvernance atteint ses limites",
+      "les projets avancent plus lentement",
+      "l'organisation peine à suivre les ambitions"
+    ],
+    "conclusion": "Chez Pillet & Partners, nous accompagnons les entreprises pour franchir ces étapes avec clarté, cohérence et engagement collectif."
+  },
+  "domains": {
+    "title": "Nos domaines d'accompagnement",
+    "eyebrow": "Quatre expertises",
+    "items": [
+      {
+        "number": "01",
+        "title": "Transitions stratégiques",
+        "description": "Clarifier les choix, sécuriser les décisions et mobiliser les acteurs autour d'une nouvelle trajectoire.",
+        "href": "#"
+      },
+      {
+        "number": "02",
+        "title": "Transformation organisationnelle",
+        "description": "Faire évoluer les structures, les responsabilités et les modes de fonctionnement pour soutenir la croissance.",
+        "href": "#"
+      },
+      {
+        "number": "03",
+        "title": "Transmission & gouvernance",
+        "description": "Préparer les étapes sensibles de succession, d'association ou de réorganisation.",
+        "href": "#"
+      },
+      {
+        "number": "04",
+        "title": "Direction stratégique externalisée",
+        "description": "Bénéficier d'un regard externe et d'un accompagnement régulier dans les décisions stratégiques.",
+        "href": "#"
+      }
+    ]
+  },
+  "approach": {
+    "eyebrow": "Notre approche",
+    "subtitle": "Une méthode structurée pour transformer les intentions stratégiques en changements concrets et durables.",
+    "steps": [
+      { "name": "Clarifier", "description": "Comprendre les enjeux réels et identifier les priorités." },
+      { "name": "Aligner", "description": "Créer une cohérence entre vision, gouvernance, leadership et organisation." },
+      { "name": "Activer", "description": "Transformer les décisions en actions." },
+      { "name": "Ancrer", "description": "Faire vivre les changements dans la durée." }
+    ]
+  },
+  "whyUs": {
+    "eyebrow": "Pourquoi nous",
+    "title": "Pourquoi Pillet & Partners ?",
+    "portrait": "/assets/line-pillet.jpg",
+    "portraitName": "Line Pillet",
+    "portraitRole": "Fondatrice & Managing Partner",
+    "reasons": [
+      {
+        "title": "Une double expertise stratégique et humaine",
+        "description": "Nous intervenons à la fois sur les enjeux de performance et sur les conditions humaines qui permettent leur réussite."
+      },
+      {
+        "title": "Une lecture systémique",
+        "description": "Nous analysons les interactions entre stratégie, gouvernance, organisation et leadership."
+      },
+      {
+        "title": "Un interlocuteur unique",
+        "description": "Fondatrice et Managing Partner de Pillet & Partners, j'accompagne personnellement chaque mission."
+      },
+      {
+        "title": "La force d'un collectif d'experts",
+        "description": "Selon les besoins, je mobilise un réseau de partenaires spécialisés afin d'apporter les compétences les plus adaptées à chaque situation."
+      }
+    ]
+  },
+  "audience": {
+    "eyebrow": "Pour qui ?",
+    "items": [
+      "Dirigeants de PME",
+      "Fondateurs et entrepreneurs",
+      "Associés",
+      "Comités de direction",
+      "Entreprises en croissance",
+      "Organisations en transformation"
+    ]
+  },
+  "finalCta": {
+    "title": "Vous préparez une étape décisive ?",
+    "text": "Parlons-en. Un premier échange permet souvent de clarifier rapidement les enjeux et les options possibles.",
+    "cta": {
+      "label": "Planifier un entretien confidentiel",
+      "href": "/contact"
+    }
+  }
+}

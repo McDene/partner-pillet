@@ -1,0 +1,154 @@
+---
+interface DomainItem {
+  number: string;
+  title: string;
+  description: string;
+  href?: string;
+}
+interface Props {
+  title: string;
+  eyebrow: string;
+  items: DomainItem[];
+}
+const { title, eyebrow, items } = Astro.props;
+---
+
+<section class="domains" id="domaines">
+  <div class="header">
+    <h2>{title}</h2>
+    <span class="eyebrow-right">{eyebrow}</span>
+  </div>
+  <ul>
+    {items.map((item, i) => (
+      <li class={i === items.length - 1 ? 'last' : ''}>
+        <span class="number">{item.number}</span>
+        <div class="content">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+.domains {
+  padding: 96px var(--pad) 0;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+h2 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(26px, 2.64vw, 38px);
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.eyebrow-right {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: grid;
+  grid-template-columns: 92px 1fr 26px;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 4px;
+  border-top: 1px solid rgba(26, 39, 51, 0.13);
+}
+
+li.last {
+  border-bottom: 1px solid rgba(26, 39, 51, 0.13);
+}
+
+.number {
+  font-family: 'Spectral', serif;
+  font-size: 30px;
+  color: var(--sand);
+  font-weight: 400;
+}
+
+.content {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+}
+
+h3 {
+  font-family: 'Spectral', serif;
+  font-size: 27px;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0;
+  flex: 0 0 360px;
+}
+
+p {
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 520px;
+}
+
+.arrow {
+  font-size: 20px;
+  color: var(--blue);
+}
+
+@media (max-width: 900px) {
+  li {
+    grid-template-columns: 60px 1fr 20px;
+    gap: 16px;
+  }
+  h3 {
+    flex: none;
+    font-size: 22px;
+  }
+  .content {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .domains { padding-top: 64px; }
+  .header { flex-direction: column; gap: 6px; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  li {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .number { font-size: 20px; }
+  .arrow { display: none; }
+}
+
+@media (max-width: 400px) {
+  .domains { padding-top: 44px; }
+  h3 { font-size: 19px; }
+  p { font-size: 15px; }
+}
+</style>

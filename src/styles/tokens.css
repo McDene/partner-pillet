@@ -1,0 +1,43 @@
+:root {
+  --navy: #0E3A5C;
+  --blue: #1A5E86;
+  --cyan: #2FA8D6;
+  --teal: #169A9E;
+  --teal-deep: #0F6E72;
+  --sand: #B7A079;
+  --sand-2: #C9B896;
+  --sand-soft: #EDE6D8;
+  --paper: #FAF8F3;
+  --paper-cool: #F4F6F7;
+  --ink: #1A2733;
+  --ink-soft: #52606B;
+
+  --pad: clamp(20px, 6.67vw, 96px);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, p, ul, ol, figure, figcaption {
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  max-width: 1440px;
+  margin-inline: auto;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

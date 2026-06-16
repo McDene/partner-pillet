@@ -1,0 +1,153 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  titleEnd: string;
+  subtitle: string;
+  ctaPrimary: { label: string; href: string };
+  ctaSecondary: { label: string; href: string };
+}
+const { eyebrow, title, titleAccent, titleEnd, subtitle, ctaPrimary, ctaSecondary } = Astro.props;
+---
+
+<section class="hero">
+  <div class="eyebrow">
+    <span class="eyebrow-line" aria-hidden="true"></span>
+    <span class="eyebrow-text">{eyebrow}</span>
+  </div>
+  <h1>{title} <em>{titleAccent}</em> {titleEnd}</h1>
+  <p class="subtitle">{subtitle}</p>
+  <div class="ctas">
+    <a href={ctaPrimary.href} class="cta-primary">{ctaPrimary.label}</a>
+    <a href={ctaSecondary.href} class="cta-secondary">
+      {ctaSecondary.label}<span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<style>
+.hero {
+  padding: 92px var(--pad) 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.eyebrow-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+
+.eyebrow-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+
+h1 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(34px, 5.1vw, 74px);
+  line-height: 1.06;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  color: var(--navy);
+  max-width: 1120px;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--blue);
+}
+
+.subtitle {
+  margin-top: 36px;
+  font-size: clamp(17px, 1.46vw, 21px);
+  line-height: 1.62;
+  color: var(--ink-soft);
+  max-width: 760px;
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 46px;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--blue);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 17px 30px;
+  border-radius: 2px;
+  transition: background 0.18s;
+}
+
+.cta-primary:hover {
+  background: var(--navy);
+}
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 17px 26px;
+  border-radius: 2px;
+  border: 1px solid rgba(26, 39, 51, 0.22);
+  transition: border-color 0.18s, color 0.18s;
+}
+
+.cta-secondary:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.arrow {
+  font-size: 18px;
+  line-height: 1;
+  color: var(--sand);
+}
+
+@media (max-width: 768px) {
+  .hero { padding-top: 60px; }
+  .subtitle { margin-top: 24px; font-size: 17px; }
+  .ctas { margin-top: 32px; }
+}
+
+@media (max-width: 560px) {
+  .ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .cta-primary,
+  .cta-secondary {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero { padding-top: 40px; }
+}
+</style>

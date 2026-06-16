@@ -1,10 +1,20 @@
 ---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/spectral/400.css';
+import '@fontsource/spectral/400-italic.css';
+import '@fontsource/spectral/500.css';
+import '@fontsource/spectral/600.css';
+import '../styles/tokens.css';
+
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Partner Pillet" } = Astro.props;
+const { title, description = "Pillet & Partners — Conseil stratégique en Suisse romande" } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,18 +30,7 @@ const { title, description = "Partner Pillet" } = Astro.props;
     <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/">Accueil</a>
-        <a href="/blog">Blog</a>
-      </nav>
-    </header>
-    <main>
-      <slot />
-    </main>
-    <footer>
-      <p>&copy; {new Date().getFullYear()} Partner Pillet</p>
-    </footer>
+    <slot />
     <script is:inline>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", function(user) {

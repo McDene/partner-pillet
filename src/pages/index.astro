@@ -1,10 +1,29 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import SignatureBand from '../components/SignatureBand.astro';
+import Challenges from '../components/Challenges.astro';
+import Domains from '../components/Domains.astro';
+import Approach from '../components/Approach.astro';
+import WhyUs from '../components/WhyUs.astro';
+import Audience from '../components/Audience.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+import data from '../content/home/index.json';
 ---
 
-<BaseLayout title="Accueil — Partner Pillet" description="Bienvenue sur Partner Pillet">
-  <section>
-    <h1>Bienvenue sur Partner Pillet</h1>
-    <p>Ce site est géré avec Astro et Decap CMS.</p>
-  </section>
+<BaseLayout title={data.seo.title} description={data.seo.description}>
+  <Header />
+  <main>
+    <Hero {...data.hero} />
+    <SignatureBand {...data.signature} />
+    <Challenges {...data.challenges} />
+    <Domains {...data.domains} />
+    <Approach {...data.approach} />
+    <WhyUs {...data.whyUs} />
+    <Audience {...data.audience} />
+    <FinalCta {...data.finalCta} />
+  </main>
+  <Footer />
 </BaseLayout>
