@@ -5,6 +5,10 @@ backend:
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
+site_url: https://radiant-bavarois-2c95dd.netlify.app
+display_url: https://radiant-bavarois-2c95dd.netlify.app
+logo_url: https://radiant-bavarois-2c95dd.netlify.app/assets/logo.png
+
 locale: "fr"
 
 slug:
