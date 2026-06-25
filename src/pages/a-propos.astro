@@ -12,7 +12,7 @@ import data from '../content/about.json';
 
     <!-- ── Hero band ── -->
     <section class="about-hero">
-      <img src="/assets/pillet-partners-startup.jpg" alt="" aria-hidden="true" loading="eager" data-ken-burns />
+      <img src={data.heroImage || '/assets/pillet-partners-startup.jpg'} alt="" aria-hidden="true" loading="eager" data-ken-burns />
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-content">
         <div class="eyebrow">
@@ -36,7 +36,7 @@ import data from '../content/about.json';
         </div>
         <figure class="bio-portrait" data-reveal style="--pp-delay:.12s">
           <div class="portrait-frame">
-            <img src="/assets/line-pillet.jpg" alt="Line Pillet, Fondatrice & Managing Partner de Pillet & Partners" loading="lazy" />
+            <img src={data.portraitImage || '/assets/line-pillet.jpg'} alt="Line Pillet, Fondatrice & Managing Partner de Pillet & Partners" loading="lazy" />
           </div>
           <figcaption>
             <span class="caption-line" aria-hidden="true"></span>
@@ -88,6 +88,7 @@ import data from '../content/about.json';
   width: 100%;
   height: 520px;
   overflow: hidden;
+  margin-top: 48px;
 }
 
 .about-hero img {

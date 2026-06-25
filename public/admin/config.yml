@@ -342,6 +342,16 @@ collections:
             fields:
               - { label: "Titre onglet", name: "title", widget: "string" }
               - { label: "Description méta", name: "description", widget: "text" }
+          - label: "Photo hero (bannière)"
+            name: "heroImage"
+            widget: "image"
+            required: false
+            hint: "Photo affichée en arrière-plan de la bannière principale"
+          - label: "Photo portrait"
+            name: "portraitImage"
+            widget: "image"
+            required: false
+            hint: "Photo de profil affichée dans la section biographie"
           - { label: "Sur-titre", name: "eyebrow", widget: "string" }
           - { label: "Titre (H1)", name: "title", widget: "string" }
           - { label: "Phrase d'accroche", name: "intro", widget: "text" }
