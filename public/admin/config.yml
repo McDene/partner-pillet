@@ -209,6 +209,11 @@ collections:
             fields:
               - { label: "Titre onglet", name: "title", widget: "string" }
               - { label: "Description méta", name: "description", widget: "text" }
+          - label: "Photo hero (bannière)"
+            name: "image"
+            widget: "image"
+            required: false
+            hint: "Photo affichée en arrière-plan de la bannière principale"
           - { label: "Sur-titre", name: "eyebrow", widget: "string" }
           - { label: "Titre (H1)", name: "title", widget: "string" }
           - { label: "Introduction", name: "intro", widget: "text" }
@@ -238,6 +243,11 @@ collections:
             fields:
               - { label: "Titre onglet", name: "title", widget: "string" }
               - { label: "Description méta", name: "description", widget: "text" }
+          - label: "Photo hero (bannière)"
+            name: "image"
+            widget: "image"
+            required: false
+            hint: "Photo affichée en arrière-plan de la bannière principale"
           - { label: "Sur-titre", name: "eyebrow", widget: "string" }
           - { label: "Titre (H1)", name: "title", widget: "string" }
           - { label: "Introduction", name: "intro", widget: "text" }
@@ -267,6 +277,11 @@ collections:
             fields:
               - { label: "Titre onglet", name: "title", widget: "string" }
               - { label: "Description méta", name: "description", widget: "text" }
+          - label: "Photo hero (bannière)"
+            name: "image"
+            widget: "image"
+            required: false
+            hint: "Photo affichée en arrière-plan de la bannière principale"
           - { label: "Sur-titre", name: "eyebrow", widget: "string" }
           - { label: "Titre (H1)", name: "title", widget: "string" }
           - { label: "Introduction", name: "intro", widget: "text" }
@@ -296,6 +311,11 @@ collections:
             fields:
               - { label: "Titre onglet", name: "title", widget: "string" }
               - { label: "Description méta", name: "description", widget: "text" }
+          - label: "Photo hero (bannière)"
+            name: "image"
+            widget: "image"
+            required: false
+            hint: "Photo affichée en arrière-plan de la bannière principale"
           - { label: "Sur-titre", name: "eyebrow", widget: "string" }
           - { label: "Titre (H1)", name: "title", widget: "string" }
           - { label: "Introduction", name: "intro", widget: "text" }

@@ -5,6 +5,7 @@
   },
   "eyebrow": "Nos domaines d'accompagnement",
   "title": "Direction stratégique externalisée",
+  "image": "/assets/pillet-partners-startup.jpg",
   "intro": "Certaines entreprises ont besoin d'un regard stratégique régulier sans recruter un directeur stratégique à plein temps. La direction stratégique externalisée permet de bénéficier d'une expertise de haut niveau tout en conservant flexibilité et maîtrise des coûts.",
   "situationsTitle": "Nous intervenons pour",
   "situations": [
@@ -24,9 +25,15 @@
   ],
   "formatsTitle": "Formats d'intervention",
   "formats": [
-    { "label": "1 jour par mois" },
-    { "label": "2 jours par mois" },
-    { "label": "4 jours par mois" }
+    {
+      "label": "1 jour par mois"
+    },
+    {
+      "label": "2 jours par mois"
+    },
+    {
+      "label": "4 jours par mois"
+    }
   ],
   "resultsTitle": "Résultats attendus",
   "results": [
