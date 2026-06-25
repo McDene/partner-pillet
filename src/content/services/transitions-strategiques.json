@@ -1,13 +1,8 @@
 {
-  "seo": {
-    "title": "Transitions stratégiques — Pillet & Partners",
-    "description": "Clarifier les choix, sécuriser les décisions et mobiliser les acteurs autour d'une nouvelle trajectoire. Cabinet de conseil stratégique en Suisse romande."
-  },
-  "eyebrow": "Nos domaines d'accompagnement",
-  "title": "Transitions stratégiques",
-  "image": "/assets/pillet-partners-startup.jpg",
-  "intro": "Les entreprises sont régulièrement confrontées à des moments où les décisions engagent durablement leur avenir : changement de cap, nouvelle phase de croissance, évolution du modèle économique, diversification ou restructuration. Dans ces périodes, les dirigeants ont besoin d'un partenaire capable de prendre de la hauteur tout en restant connecté aux réalités opérationnelles.",
+  "resultsTitle": "Résultats recherchés",
   "situationsTitle": "Les situations les plus fréquentes",
+  "eyebrow": "Nos domaines d'accompagnement",
+  "intro": "Les entreprises sont régulièrement confrontées à des moments où les décisions engagent durablement leur avenir : changement de cap, nouvelle phase de croissance, évolution du modèle économique, diversification ou restructuration. Dans ces périodes, les dirigeants ont besoin d'un partenaire capable de prendre de la hauteur tout en restant connecté aux réalités opérationnelles.",
   "situations": [
     "Besoin de clarifier la vision.",
     "Divergences au sein de la direction.",
@@ -15,19 +10,24 @@
     "Manque d'adhésion autour de la stratégie.",
     "Complexification de l'organisation."
   ],
+  "results": [
+    "Vision clarifiée.",
+    "Priorités partagées.",
+    "Décisions accélérées.",
+    "Mobilisation des équipes."
+  ],
+  "title": "Transitions stratégiques",
   "servicesTitle": "Ce que nous apportons",
+  "image": "/uploads/photo-1529079018732-bdb88456f8c2.avif",
+  "seo": {
+    "title": "Transitions stratégiques — Pillet & Partners",
+    "description": "Clarifier les choix, sécuriser les décisions et mobiliser les acteurs autour d'une nouvelle trajectoire. Cabinet de conseil stratégique en Suisse romande."
+  },
   "services": [
     "Diagnostic stratégique.",
     "Facilitation des décisions.",
     "Alignement des parties prenantes.",
     "Construction de la feuille de route.",
     "Accompagnement de la mise en œuvre."
-  ],
-  "resultsTitle": "Résultats recherchés",
-  "results": [
-    "Vision clarifiée.",
-    "Priorités partagées.",
-    "Décisions accélérées.",
-    "Mobilisation des équipes."
   ]
 }
