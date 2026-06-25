@@ -4,7 +4,7 @@ import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://radiant-bavarois-2c95dd.netlify.app',
+  site: 'https://pillet-partners.ch',
   adapter: netlify(),
   output: 'static',
   integrations: [
