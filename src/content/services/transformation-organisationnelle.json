@@ -1,13 +1,8 @@
 {
-  "seo": {
-    "title": "Transformation organisationnelle — Pillet & Partners",
-    "description": "Faire évoluer les structures, les responsabilités et les modes de fonctionnement pour soutenir la croissance de votre entreprise en Suisse romande."
-  },
-  "eyebrow": "Nos domaines d'accompagnement",
-  "title": "Transformation organisationnelle",
-  "image": "/assets/pillet-partners-startup.jpg",
-  "intro": "Lorsque l'entreprise grandit, son organisation doit évoluer. Les structures, les responsabilités, les processus décisionnels et les modes de management qui ont permis de réussir hier ne sont pas toujours adaptés aux défis de demain.",
+  "resultsTitle": "Résultats attendus",
   "situationsTitle": "Nous intervenons notamment lorsque",
+  "eyebrow": "Nos domaines d'accompagnement",
+  "intro": "Lorsque l'entreprise grandit, son organisation doit évoluer. Les structures, les responsabilités, les processus décisionnels et les modes de management qui ont permis de réussir hier ne sont pas toujours adaptés aux défis de demain.",
   "situations": [
     "Les rôles deviennent flous.",
     "Les décisions ralentissent.",
@@ -15,19 +10,24 @@
     "La croissance génère de nouvelles tensions.",
     "Une réorganisation devient nécessaire."
   ],
+  "results": [
+    "Organisation plus fluide.",
+    "Responsabilités clarifiées.",
+    "Décisions plus efficaces.",
+    "Meilleure capacité d'exécution."
+  ],
+  "title": "Transformation organisationnelle",
   "servicesTitle": "Nos interventions",
+  "image": "/uploads/photo-1493612276216-ee3925520721.avif",
+  "seo": {
+    "title": "Transformation organisationnelle — Pillet & Partners",
+    "description": "Faire évoluer les structures, les responsabilités et les modes de fonctionnement pour soutenir la croissance de votre entreprise en Suisse romande."
+  },
   "services": [
     "Diagnostic organisationnel.",
     "Clarification des rôles et responsabilités.",
     "Évolution de la gouvernance.",
     "Développement du leadership.",
     "Accompagnement du changement."
-  ],
-  "resultsTitle": "Résultats attendus",
-  "results": [
-    "Organisation plus fluide.",
-    "Responsabilités clarifiées.",
-    "Décisions plus efficaces.",
-    "Meilleure capacité d'exécution."
   ]
 }
