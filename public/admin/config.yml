@@ -393,7 +393,7 @@ collections:
   # PARAMÈTRES PIED DE PAGE
   # ─────────────────────────────────────────────
   - name: "footer"
-    label: "⚙️ Paramètres"
+    label: "🔗 Réseaux sociaux"
     delete: false
     editor:
       preview: false
@@ -451,7 +451,7 @@ collections:
   # BLOG
   # ─────────────────────────────────────────────
   - name: "blog"
-    label: "📝 Articles de blog"
+    label: "📝 Articles de blog — Bientôt disponible"
     label_singular: "Article"
     folder: "src/content/blog"
     create: true
