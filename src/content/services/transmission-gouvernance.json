@@ -1,13 +1,8 @@
 {
-  "seo": {
-    "title": "Transmission & gouvernance — Pillet & Partners",
-    "description": "Préparer les étapes sensibles de succession, d'association ou de réorganisation. Accompagnement en transmission d'entreprise en Suisse romande."
-  },
-  "eyebrow": "Nos domaines d'accompagnement",
-  "title": "Transmission & gouvernance",
-  "image": "/assets/pillet-partners-startup.jpg",
-  "intro": "Préparer une transmission ou faire évoluer la gouvernance représente souvent l'une des étapes les plus sensibles de la vie d'une entreprise. Au-delà des aspects juridiques et financiers, ces transitions impliquent des enjeux humains, relationnels et stratégiques majeurs.",
+  "resultsTitle": "Résultats attendus",
   "situationsTitle": "Nous accompagnons",
+  "eyebrow": "Nos domaines d'accompagnement",
+  "intro": "Préparer une transmission ou faire évoluer la gouvernance représente souvent l'une des étapes les plus sensibles de la vie d'une entreprise. Au-delà des aspects juridiques et financiers, ces transitions impliquent des enjeux humains, relationnels et stratégiques majeurs.",
   "situations": [
     "Les transmissions familiales.",
     "Les successions de dirigeants.",
@@ -15,19 +10,24 @@
     "Les réorganisations de gouvernance.",
     "Les évolutions de comité de direction."
   ],
+  "results": [
+    "Transition sécurisée.",
+    "Gouvernance renforcée.",
+    "Transmission facilitée.",
+    "Pérennité de l'entreprise."
+  ],
+  "title": "Transmission & gouvernance",
   "servicesTitle": "Notre accompagnement",
+  "image": "/uploads/photo-1505816014357-96b5ff457e9a.avif",
+  "seo": {
+    "title": "Transmission & gouvernance — Pillet & Partners",
+    "description": "Préparer les étapes sensibles de succession, d'association ou de réorganisation. Accompagnement en transmission d'entreprise en Suisse romande."
+  },
   "services": [
     "Clarification des rôles et de la vision.",
     "Préparation des parties prenantes.",
     "Définition de la gouvernance future.",
     "Gestion des risques relationnels.",
     "Continuité opérationnelle."
-  ],
-  "resultsTitle": "Résultats attendus",
-  "results": [
-    "Transition sécurisée.",
-    "Gouvernance renforcée.",
-    "Transmission facilitée.",
-    "Pérennité de l'entreprise."
   ]
 }
