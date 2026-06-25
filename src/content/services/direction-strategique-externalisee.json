@@ -1,13 +1,8 @@
 {
-  "seo": {
-    "title": "Direction stratégique externalisée — Pillet & Partners",
-    "description": "Bénéficiez d'une expertise stratégique de haut niveau pour votre PME sans recruter à temps plein. Direction stratégique externalisée en Suisse romande."
-  },
-  "eyebrow": "Nos domaines d'accompagnement",
-  "title": "Direction stratégique externalisée",
-  "image": "/assets/pillet-partners-startup.jpg",
-  "intro": "Certaines entreprises ont besoin d'un regard stratégique régulier sans recruter un directeur stratégique à plein temps. La direction stratégique externalisée permet de bénéficier d'une expertise de haut niveau tout en conservant flexibilité et maîtrise des coûts.",
+  "resultsTitle": "Résultats attendus",
   "situationsTitle": "Nous intervenons pour",
+  "eyebrow": "Nos domaines d'accompagnement",
+  "intro": "Certaines entreprises ont besoin d'un regard stratégique régulier sans recruter un directeur stratégique à plein temps. La direction stratégique externalisée permet de bénéficier d'une expertise de haut niveau tout en conservant flexibilité et maîtrise des coûts.",
   "situations": [
     "Accompagner le dirigeant dans ses décisions.",
     "Participer aux comités de direction.",
@@ -15,14 +10,15 @@
     "Piloter les transformations.",
     "Suivre les indicateurs stratégiques."
   ],
-  "servicesTitle": "Ce que vous gagnez",
-  "services": [
-    "Un regard externe et indépendant.",
-    "Une expertise sans embauche à temps plein.",
-    "Une flexibilité d'intervention.",
-    "Une cohérence dans la durée.",
-    "Un accès à un réseau d'experts spécialisés."
+  "results": [
+    "Décisions mieux préparées.",
+    "Vision long terme préservée.",
+    "Gouvernance renforcée.",
+    "Exécution sécurisée."
   ],
+  "title": "Direction stratégique externalisée",
+  "servicesTitle": "Ce que vous gagnez",
+  "image": "/uploads/photo-1493612276216-ee3925520721.avif",
   "formatsTitle": "Formats d'intervention",
   "formats": [
     {
@@ -35,11 +31,15 @@
       "label": "4 jours par mois"
     }
   ],
-  "resultsTitle": "Résultats attendus",
-  "results": [
-    "Décisions mieux préparées.",
-    "Vision long terme préservée.",
-    "Gouvernance renforcée.",
-    "Exécution sécurisée."
+  "seo": {
+    "title": "Direction stratégique externalisée — Pillet & Partners",
+    "description": "Bénéficiez d'une expertise stratégique de haut niveau pour votre PME sans recruter à temps plein. Direction stratégique externalisée en Suisse romande."
+  },
+  "services": [
+    "Un regard externe et indépendant.",
+    "Une expertise sans embauche à temps plein.",
+    "Une flexibilité d'intervention.",
+    "Une cohérence dans la durée.",
+    "Un accès à un réseau d'experts spécialisés."
   ]
 }
