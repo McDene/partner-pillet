@@ -372,6 +372,11 @@ collections:
             widget: "image"
             required: false
             hint: "Photo de profil affichée dans la section biographie"
+          - label: "URL LinkedIn personnel (Line Pillet)"
+            name: "linkedinPersonal"
+            widget: "string"
+            required: false
+            hint: "Lien vers le profil LinkedIn de Line Pillet (ex: https://www.linkedin.com/in/linepillet)"
           - { label: "Sur-titre", name: "eyebrow", widget: "string" }
           - { label: "Titre (H1)", name: "title", widget: "string" }
           - { label: "Phrase d'accroche", name: "intro", widget: "text" }
@@ -461,11 +466,23 @@ collections:
         label: "🔗 Liens & réseaux sociaux"
         file: "src/content/settings/footer.json"
         fields:
-          - label: "URL LinkedIn"
+          - label: "URL LinkedIn (entreprise)"
             name: "linkedin"
             widget: "string"
             required: false
-            hint: "Laisser vide pour masquer l'icône LinkedIn (ex: https://www.linkedin.com/in/linepillet)"
+            hint: "Laisser vide pour masquer l'icône LinkedIn (ex: https://www.linkedin.com/company/pillet-partners)"
+          - label: "Adresse"
+            name: "address"
+            widget: "string"
+            required: false
+          - label: "E-mail"
+            name: "email"
+            widget: "string"
+            required: false
+          - label: "Téléphone"
+            name: "phone"
+            widget: "string"
+            required: false
 
   # ─────────────────────────────────────────────
   # PAGES LÉGALES

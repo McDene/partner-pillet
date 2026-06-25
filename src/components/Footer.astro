@@ -5,13 +5,19 @@ import mentionsLegales from '../content/legal/mentions-legales.json';
 const year = new Date().getFullYear();
 const linkedinUrl = footerSettings.linkedin?.trim() || '';
 const showMentions = mentionsLegales.actif === true;
+const address = footerSettings.address?.trim() || '';
+const email = footerSettings.email?.trim() || '';
+const phone = footerSettings.phone?.trim() || '';
 ---
 
 <footer>
   <div class="top-row">
     <div class="brand">
       <div class="brand-mark" aria-hidden="true"></div>
-      <span class="brand-name">PILLET&nbsp;&amp;&nbsp;PARTNERS</span>
+      <div class="brand-text">
+        <span class="brand-name">PILLET&nbsp;&amp;&nbsp;PARTNERS</span>
+        <span class="brand-slogan">Empower &amp; Engage Your People To Lead Change</span>
+      </div>
     </div>
     {linkedinUrl && (
       <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" class="linkedin" aria-label="LinkedIn">
@@ -23,6 +29,14 @@ const showMentions = mentionsLegales.actif === true;
   </div>
 
   <p class="tagline">Conseil stratégique · Suisse romande</p>
+
+  {(address || email || phone) && (
+    <div class="contact-info">
+      {address && <span>{address}</span>}
+      {email && <a href={`mailto:${email}`}>{email}</a>}
+      {phone && <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a>}
+    </div>
+  )}
 
   <div class="bottom-row">
     <div class="links">
@@ -42,7 +56,7 @@ footer {
 
 .top-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 12px;
 }
@@ -64,12 +78,27 @@ footer {
   filter: brightness(0) invert(1);
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .brand-name {
   font-family: 'Spectral', serif;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.14em;
   color: #fff;
+  line-height: 1;
+}
+
+.brand-slogan {
+  font-size: 10px;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,.45);
+  line-height: 1;
 }
 
 .linkedin {
@@ -77,6 +106,7 @@ footer {
   align-items: center;
   color: rgba(255,255,255,.6);
   transition: color 0.18s;
+  margin-top: 2px;
 }
 
 .linkedin:hover {
@@ -86,7 +116,25 @@ footer {
 .tagline {
   font-size: 14px;
   color: rgba(255,255,255,.5);
+  margin-bottom: 24px;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
   margin-bottom: 32px;
+}
+
+.contact-info span,
+.contact-info a {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.55);
+  transition: color 0.18s;
+}
+
+.contact-info a:hover {
+  color: rgba(255,255,255,.9);
 }
 
 .bottom-row {
@@ -94,6 +142,8 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 24px;
 }
 
 .links {
@@ -118,11 +168,12 @@ footer {
 
 @media (max-width: 768px) {
   footer { padding-top: 44px; padding-bottom: 44px; }
-  .tagline { margin-bottom: 24px; }
+  .tagline { margin-bottom: 20px; }
 }
 
 @media (max-width: 480px) {
   footer { padding-top: 36px; padding-bottom: 36px; }
   .bottom-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .contact-info { flex-direction: column; gap: 6px; }
 }
 </style>

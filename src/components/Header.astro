@@ -10,7 +10,10 @@ const navLinks = [
 <header data-animate="down">
   <a class="brand" href="/">
     <div class="brand-mark" aria-hidden="true"></div>
-    <span class="brand-name">PILLET&nbsp;&amp;&nbsp;PARTNERS</span>
+    <div class="brand-text">
+      <span class="brand-name">PILLET&nbsp;&amp;&nbsp;PARTNERS</span>
+      <span class="brand-slogan">Empower &amp; Engage Your People To Lead Change</span>
+    </div>
   </a>
   <nav>
     {navLinks.map(link => (
@@ -48,6 +51,12 @@ header {
   transform: scale(1.06);
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .brand-name {
   font-family: 'Spectral', serif;
   font-size: 21px;
@@ -55,10 +64,21 @@ header {
   letter-spacing: 0.14em;
   color: var(--navy);
   transition: color 0.2s;
+  line-height: 1;
 }
 
 .brand:hover .brand-name {
   color: var(--blue);
+}
+
+.brand-slogan {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  font-style: italic;
+  line-height: 1;
 }
 
 nav {
@@ -120,6 +140,7 @@ nav a:hover::after {
 @media (max-width: 400px) {
   .brand-mark { width: 36px; height: 36px; background-size: 60px 60px; }
   .brand-name { font-size: 15px; }
+  .brand-slogan { display: none; }
   nav { gap: 10px 16px; }
   nav a { font-size: 12.5px; }
 }
