@@ -1,0 +1,23 @@
+{
+  "seo": {
+    "title": "Contact — Pillet & Partners",
+    "description": "Planifiez un premier échange confidentiel avec Line Pillet. Cabinet de conseil stratégique en Suisse romande."
+  },
+  "eyebrow": "Prenons contact",
+  "title": "Parlons de votre situation",
+  "lead": "Un premier échange permet souvent de clarifier rapidement les enjeux et les options possibles. Contactez-nous pour planifier un entretien confidentiel.",
+  "fieldName": { "label": "Nom complet", "placeholder": "Line Dupont" },
+  "fieldEmail": { "label": "Adresse e-mail", "placeholder": "vous@exemple.ch" },
+  "fieldPhone": { "label": "Téléphone", "placeholder": "+41 79 000 00 00" },
+  "fieldSubject": { "label": "Sujet", "placeholder": "Sélectionnez un sujet…" },
+  "fieldMessage": { "label": "Message", "placeholder": "Décrivez brièvement votre situation et ce pour quoi vous souhaitez être accompagné·e…" },
+  "subjects": [
+    "Transitions stratégiques",
+    "Transformation organisationnelle",
+    "Transmission & gouvernance",
+    "Direction stratégique externalisée",
+    "Autre"
+  ],
+  "confidentiality": "Vos informations sont traitées de manière strictement confidentielle.",
+  "submitLabel": "Envoyer ma demande"
+}

@@ -390,6 +390,65 @@ collections:
   # BLOG
   # ─────────────────────────────────────────────
   # ─────────────────────────────────────────────
+  # PAGE CONTACT
+  # ─────────────────────────────────────────────
+  - name: "contact"
+    label: "✉️ Page Contact"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "contact"
+        label: "✉️ Formulaire de contact"
+        file: "src/content/contact.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Texte d'introduction", name: "lead", widget: "text" }
+          - label: "Champ — Nom complet"
+            name: "fieldName"
+            widget: "object"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Placeholder", name: "placeholder", widget: "string" }
+          - label: "Champ — E-mail"
+            name: "fieldEmail"
+            widget: "object"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Placeholder", name: "placeholder", widget: "string" }
+          - label: "Champ — Téléphone"
+            name: "fieldPhone"
+            widget: "object"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Placeholder", name: "placeholder", widget: "string" }
+          - label: "Champ — Sujet"
+            name: "fieldSubject"
+            widget: "object"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Placeholder (option vide)", name: "placeholder", widget: "string" }
+          - label: "Options du menu Sujet"
+            name: "subjects"
+            widget: "list"
+            field: { label: "Sujet", name: "item", widget: "string" }
+          - label: "Champ — Message"
+            name: "fieldMessage"
+            widget: "object"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Placeholder", name: "placeholder", widget: "text" }
+          - { label: "Note de confidentialité", name: "confidentiality", widget: "string" }
+          - { label: "Texte du bouton", name: "submitLabel", widget: "string" }
+
+  # ─────────────────────────────────────────────
   # PARAMÈTRES PIED DE PAGE
   # ─────────────────────────────────────────────
   - name: "footer"
