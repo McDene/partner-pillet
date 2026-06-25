@@ -5,9 +5,9 @@ backend:
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-site_url: https://radiant-bavarois-2c95dd.netlify.app
-display_url: https://radiant-bavarois-2c95dd.netlify.app
-logo_url: https://radiant-bavarois-2c95dd.netlify.app/assets/logo.png
+site_url: https://pillet-partners.ch
+display_url: https://pillet-partners.ch
+logo_url: https://pillet-partners.ch/assets/logo.png
 
 locale: "fr"
 
@@ -355,6 +355,67 @@ collections:
             name: "networkItems"
             widget: "list"
             field: { label: "Domaine", name: "item", widget: "string" }
+
+  # ─────────────────────────────────────────────
+  # BLOG
+  # ─────────────────────────────────────────────
+  # ─────────────────────────────────────────────
+  # PARAMÈTRES PIED DE PAGE
+  # ─────────────────────────────────────────────
+  - name: "footer"
+    label: "⚙️ Paramètres"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "footer"
+        label: "🔗 Liens & réseaux sociaux"
+        file: "src/content/settings/footer.json"
+        fields:
+          - label: "URL LinkedIn"
+            name: "linkedin"
+            widget: "string"
+            required: false
+            hint: "Laisser vide pour masquer l'icône LinkedIn (ex: https://www.linkedin.com/in/linepillet)"
+
+  # ─────────────────────────────────────────────
+  # PAGES LÉGALES
+  # ─────────────────────────────────────────────
+  - name: "legal"
+    label: "⚖️ Pages légales"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "confidentialite"
+        label: "🔒 Politique de confidentialité"
+        file: "src/content/legal/confidentialite.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Contenu", name: "content", widget: "markdown" }
+      - name: "mentions-legales"
+        label: "📋 Mentions légales"
+        file: "src/content/legal/mentions-legales.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - label: "Afficher dans le pied de page"
+            name: "actif"
+            widget: "boolean"
+            default: false
+            hint: "Activer uniquement quand le contenu est prêt à être publié"
+          - { label: "Titre (H1)", name: "title", widget: "string" }
+          - { label: "Contenu", name: "content", widget: "markdown", required: false }
 
   # ─────────────────────────────────────────────
   # BLOG
