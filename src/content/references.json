@@ -3,6 +3,7 @@
     "title": "Références — Pillet & Partners",
     "description": "Témoignages, documents de référence et entreprises qui font confiance à Pillet & Partners pour leur conseil stratégique en Suisse romande."
   },
+  "heroImage": "/assets/pillet-partners-startup.jpg",
   "eyebrow": "Preuve sociale & ressources",
   "pageTitle": "Références",
   "testimonialsActive": true,
@@ -21,7 +22,7 @@
       "author": "Directeur d'un centre de formation"
     }
   ],
-  "trustActive": false,
+  "trustActive": true,
   "trustTitle": "Ils nous font confiance",
   "trustIntro": "Des organisations de toutes tailles qui nous ont confié leurs enjeux stratégiques.",
   "trustLogos": [],
