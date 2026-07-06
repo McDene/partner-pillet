@@ -1,0 +1,552 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+import data from '../content/references.json';
+
+const hasTestimonials = data.testimonialsActive && data.testimonials?.length > 0;
+const hasTrust = data.trustActive && data.trustLogos?.length > 0;
+const hasDocs = data.documentsActive;
+---
+
+<BaseLayout title={data.seo.title} description={data.seo.description}>
+  <Header />
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="ref-hero">
+      <div class="ref-hero-inner">
+        <div class="eyebrow">
+          <span class="eyebrow-line" data-animate="line" aria-hidden="true"></span>
+          <span class="eyebrow-text" data-animate style="--pp-delay:.07s">{data.eyebrow}</span>
+        </div>
+        <h1 data-animate style="--pp-delay:.16s">{data.pageTitle}</h1>
+      </div>
+    </section>
+
+    <!-- ── Témoignages ── -->
+    {hasTestimonials && (
+      <section class="ref-testimonials" aria-label="Témoignages">
+        <div class="testimonials-inner">
+          <div class="section-eyebrow" data-reveal>
+            <span class="section-line" aria-hidden="true"></span>
+            <span class="section-label">{data.testimonialsTitle}</span>
+          </div>
+
+          <div class="carousel" role="region" aria-label="Carrousel de témoignages">
+            <div class="carousel-track">
+              {data.testimonials.map((t, i) => (
+                <div class={`slide${i === 0 ? ' active' : ''}`} role="group" aria-label={`Témoignage ${i + 1} sur ${data.testimonials.length}`}>
+                  <blockquote class="testimonial-block">
+                    <span class="quote-mark" aria-hidden="true">"</span>
+                    <p class="quote-text">{t.quote}</p>
+                    <footer class="quote-author">
+                      <span class="author-line" aria-hidden="true"></span>
+                      <cite>{t.author}</cite>
+                    </footer>
+                  </blockquote>
+                </div>
+              ))}
+            </div>
+
+            {data.testimonials.length > 1 && (
+              <div class="carousel-controls">
+                <button class="carousel-btn prev" aria-label="Témoignage précédent">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+                    <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div class="dots" role="tablist">
+                  {data.testimonials.map((_, i) => (
+                    <button class={`dot${i === 0 ? ' active' : ''}`} role="tab" aria-label={`Aller au témoignage ${i + 1}`} data-index={i}></button>
+                  ))}
+                </div>
+                <button class="carousel-btn next" aria-label="Témoignage suivant">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+                    <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- ── Ils nous font confiance ── -->
+    {hasTrust && (
+      <section class="ref-trust" data-reveal>
+        <div class="section-eyebrow">
+          <span class="section-line" aria-hidden="true"></span>
+          <span class="section-label">{data.trustTitle}</span>
+        </div>
+        {data.trustIntro && <p class="trust-intro">{data.trustIntro}</p>}
+        <div class="logos-grid">
+          {data.trustLogos.map((logo) => (
+            <div class="logo-item" data-reveal>
+              <img src={logo.logo} alt={logo.name} loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- ── Documents ── -->
+    {hasDocs && (
+      <section class="ref-docs">
+        <div class="ref-docs-inner">
+          <div class="section-eyebrow" data-reveal>
+            <span class="section-line-dark" aria-hidden="true"></span>
+            <span class="section-label-dark">{data.documentsTitle}</span>
+          </div>
+          {data.documentsIntro && <p class="docs-intro" data-reveal>{data.documentsIntro}</p>}
+
+          {data.documents?.length > 0 ? (
+            <ul class="docs-list">
+              {data.documents.map((doc, i) => (
+                <li class="doc-item" data-reveal style={`--pp-delay: ${(i * 0.07).toFixed(2)}s`}>
+                  <div class="doc-meta">
+                    {doc.category && <span class="doc-category">{doc.category}</span>}
+                    <h3 class="doc-title">{doc.title}</h3>
+                    {doc.description && <p class="doc-description">{doc.description}</p>}
+                  </div>
+                  <a
+                    href={doc.file || doc.externalUrl || '#'}
+                    class="doc-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={doc.file ? true : undefined}
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" aria-hidden="true">
+                      <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Télécharger
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="docs-empty" data-reveal>Les documents seront disponibles prochainement.</p>
+          )}
+        </div>
+      </section>
+    )}
+
+    <FinalCta
+      title="Parlons de votre situation."
+      text="Un premier échange permet souvent de clarifier rapidement les enjeux et les options possibles."
+      cta={{ label: "Planifier un entretien confidentiel", href: "/contact" }}
+    />
+  </main>
+  <Footer />
+</BaseLayout>
+
+{hasTestimonials && data.testimonials.length > 1 && (
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
+    let timer = null;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function startTimer() {
+      if (reduced) return;
+      timer = setInterval(() => goTo(current + 1), 6000);
+    }
+
+    function stopTimer() {
+      clearInterval(timer);
+    }
+
+    startTimer();
+
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('mouseenter', stopTimer);
+    carousel.addEventListener('mouseleave', startTimer);
+    carousel.addEventListener('focusin', stopTimer);
+    carousel.addEventListener('focusout', startTimer);
+
+    document.querySelector('.prev').addEventListener('click', () => { stopTimer(); goTo(current - 1); startTimer(); });
+    document.querySelector('.next').addEventListener('click', () => { stopTimer(); goTo(current + 1); startTimer(); });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { stopTimer(); goTo(i); startTimer(); });
+    });
+  </script>
+)}
+
+<style>
+/* ── Hero ──────────────────────────────── */
+
+.ref-hero {
+  background: var(--navy);
+  margin-top: 48px;
+  padding: clamp(56px, 9vw, 112px) var(--pad) clamp(48px, 7vw, 80px);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.eyebrow-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand-2);
+  flex-shrink: 0;
+}
+
+.eyebrow-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand-2);
+}
+
+h1 {
+  font-family: 'Spectral', serif;
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.018em;
+  margin: 0;
+}
+
+/* ── Shared section eyebrow ──────────── */
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.section-line {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand-2);
+  flex-shrink: 0;
+}
+
+.section-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand-2);
+}
+
+.section-line-dark {
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+
+.section-label-dark {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+/* ── Témoignages ─────────────────────── */
+
+.ref-testimonials {
+  background: var(--navy);
+  padding: clamp(64px, 9vw, 112px) var(--pad);
+}
+
+.testimonials-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: grid;
+  min-height: 280px;
+}
+
+.slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s cubic-bezier(.22,1,.36,1), transform 0.6s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide { transition: opacity 0.3s; transform: none; }
+}
+
+.testimonial-block {
+  margin: 0;
+  padding: 0;
+}
+
+.quote-mark {
+  font-family: 'Spectral', serif;
+  font-size: 96px;
+  line-height: 0.6;
+  color: var(--sand);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 24px;
+  user-select: none;
+}
+
+.quote-text {
+  font-family: 'Spectral', serif;
+  font-size: clamp(18px, 2vw, 26px);
+  line-height: 1.56;
+  font-style: italic;
+  color: rgba(255,255,255,.92);
+  margin: 0 0 32px;
+}
+
+.quote-author {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.author-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+cite {
+  font-style: normal;
+  font-size: 14.5px;
+  color: rgba(255,255,255,.55);
+  letter-spacing: 0.02em;
+}
+
+/* Carousel controls */
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.carousel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255,255,255,.6);
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s;
+}
+
+.carousel-btn:hover {
+  border-color: rgba(255,255,255,.7);
+  color: #fff;
+}
+
+.dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.22s, transform 0.22s;
+}
+
+.dot.active {
+  background: var(--sand);
+  transform: scale(1.3);
+}
+
+/* ── Ils nous font confiance ─────────── */
+
+.ref-trust {
+  padding: clamp(64px, 9vw, 112px) var(--pad);
+  background: #fff;
+}
+
+.trust-intro {
+  font-size: 17px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 0 48px;
+}
+
+.logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 48px;
+  align-items: center;
+}
+
+.logo-item img {
+  height: 44px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: filter 0.28s, opacity 0.28s;
+}
+
+.logo-item img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* ── Documents ───────────────────────── */
+
+.ref-docs {
+  background: var(--paper);
+  padding: clamp(64px, 9vw, 112px) var(--pad);
+}
+
+.ref-docs-inner {
+  max-width: 860px;
+}
+
+.docs-intro {
+  font-size: 17px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  max-width: 640px;
+  margin: 0 0 48px;
+}
+
+.docs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.doc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(26,39,51,.1);
+}
+
+.doc-item:last-child {
+  border-bottom: 1px solid rgba(26,39,51,.1);
+}
+
+.doc-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.doc-category {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+
+.doc-title {
+  font-family: 'Spectral', serif;
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-weight: 500;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+
+.doc-description {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.doc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue);
+  border: 1px solid rgba(26,94,134,.3);
+  border-radius: 2px;
+  padding: 10px 20px;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.doc-btn:hover {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+.docs-empty {
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ── Responsive ──────────────────────── */
+
+@media (max-width: 768px) {
+  .carousel-track { min-height: 320px; }
+  .quote-mark { font-size: 72px; }
+}
+
+@media (max-width: 480px) {
+  .carousel-track { min-height: 380px; }
+  .quote-text { font-size: 17px; }
+  .doc-item { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .doc-btn { width: 100%; justify-content: center; }
+  .logos-grid { gap: 24px 32px; }
+}
+</style>

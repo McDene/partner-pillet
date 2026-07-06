@@ -395,6 +395,81 @@ collections:
   # BLOG
   # ─────────────────────────────────────────────
   # ─────────────────────────────────────────────
+  # PAGE RÉFÉRENCES
+  # ─────────────────────────────────────────────
+  - name: "references"
+    label: "⭐ Page Références"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "references"
+        label: "⭐ Références"
+        file: "src/content/references.json"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Titre onglet", name: "title", widget: "string" }
+              - { label: "Description méta", name: "description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre (H1)", name: "pageTitle", widget: "string" }
+          - label: "── Témoignages ──────────────────"
+            name: "testimonialsSection"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Afficher les témoignages", name: "dummy", widget: "hidden", default: "" }
+          - label: "Afficher les témoignages"
+            name: "testimonialsActive"
+            widget: "boolean"
+            default: true
+          - { label: "Titre — témoignages", name: "testimonialsTitle", widget: "string" }
+          - label: "Témoignages"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Citation", name: "quote", widget: "text" }
+              - { label: "Auteur / fonction", name: "author", widget: "string" }
+          - label: "── Ils nous font confiance ──────"
+            name: "trustSectionDivider"
+            widget: "hidden"
+            default: ""
+          - label: "Afficher 'Ils nous font confiance'"
+            name: "trustActive"
+            widget: "boolean"
+            default: false
+            hint: "Activer uniquement après validation des clients"
+          - { label: "Titre", name: "trustTitle", widget: "string" }
+          - { label: "Introduction", name: "trustIntro", widget: "text", required: false }
+          - label: "Logos clients"
+            name: "trustLogos"
+            widget: "list"
+            fields:
+              - { label: "Nom du client", name: "name", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+          - label: "── Documents ────────────────────"
+            name: "docsSectionDivider"
+            widget: "hidden"
+            default: ""
+          - label: "Afficher les documents"
+            name: "documentsActive"
+            widget: "boolean"
+            default: true
+          - { label: "Titre — documents", name: "documentsTitle", widget: "string" }
+          - { label: "Introduction", name: "documentsIntro", widget: "text", required: false }
+          - label: "Documents"
+            name: "documents"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Catégorie", name: "category", widget: "string", required: false, hint: "Ex: Article de presse, Guide pratique" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Fichier PDF (upload)", name: "file", widget: "file", required: false }
+              - { label: "Ou lien externe", name: "externalUrl", widget: "string", required: false, hint: "Google Drive, Dropbox, etc." }
+
+  # ─────────────────────────────────────────────
   # PAGE CONTACT
   # ─────────────────────────────────────────────
   - name: "contact"
