@@ -4,6 +4,7 @@ interface DomainItem {
   title: string;
   description: string;
   href?: string;
+  situations?: string[];
 }
 interface Props {
   title: string;
@@ -26,7 +27,14 @@ const { title, eyebrow, items } = Astro.props;
             <span class="number">{item.number}</span>
             <div class="content">
               <h3>{item.title}</h3>
-              <p>{item.description}</p>
+              <div class="content-right">
+                <p>{item.description}</p>
+                {item.situations && item.situations.length > 0 && (
+                  <ul class="situations">
+                    {item.situations.map(s => <li>{s}</li>)}
+                  </ul>
+                )}
+              </div>
             </div>
             <span class="arrow" aria-hidden="true">→</span>
           </a>
@@ -35,7 +43,14 @@ const { title, eyebrow, items } = Astro.props;
             <span class="number">{item.number}</span>
             <div class="content">
               <h3>{item.title}</h3>
-              <p>{item.description}</p>
+              <div class="content-right">
+                <p>{item.description}</p>
+                {item.situations && item.situations.length > 0 && (
+                  <ul class="situations">
+                    {item.situations.map(s => <li>{s}</li>)}
+                  </ul>
+                )}
+              </div>
             </div>
             <span class="arrow" aria-hidden="true">→</span>
           </span>
@@ -119,6 +134,13 @@ a.row-link:hover {
   gap: 28px;
 }
 
+.content-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 520px;
+}
+
 h3 {
   font-family: 'Spectral', serif;
   font-size: 27px;
@@ -138,7 +160,28 @@ p {
   font-size: 16.5px;
   line-height: 1.5;
   color: var(--ink-soft);
-  max-width: 520px;
+}
+
+.situations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.situations li {
+  border: none;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-soft);
+  opacity: 0.72;
+  background: rgba(26, 39, 51, 0.055);
+  border-radius: 999px;
+  padding: 4px 13px;
+  line-height: 1.4;
+  white-space: nowrap;
 }
 
 .arrow {
@@ -164,6 +207,7 @@ a.row-link:hover .arrow {
     flex-direction: column;
     gap: 8px;
   }
+  .content-right { max-width: 100%; }
 }
 
 @media (max-width: 768px) {
@@ -178,6 +222,7 @@ a.row-link:hover .arrow {
   }
   .number { font-size: 20px; }
   .arrow { display: none; }
+  .situations li { white-space: normal; }
 }
 
 @media (max-width: 480px) {

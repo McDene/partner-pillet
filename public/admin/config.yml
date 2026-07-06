@@ -114,6 +114,12 @@ collections:
               - { label: "Titre", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Lien", name: "href", widget: "string", required: false, hint: "Laisser vide si la page n'existe pas encore." }
+              - label: "Exemples de situations concrètes"
+                name: "situations"
+                widget: "list"
+                required: false
+                hint: "1 à 2 situations types pour que les visiteurs se reconnaissent. Ex : Prise de fonction d'un nouveau dirigeant"
+                field: { label: "Situation", name: "item", widget: "string" }
 
       - name: "approach"
         label: "🔄 Notre approche"

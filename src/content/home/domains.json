@@ -6,25 +6,41 @@
       "number": "01",
       "title": "Transitions stratégiques",
       "description": "Clarifier les choix, sécuriser les décisions et mobiliser les acteurs autour d'une nouvelle trajectoire.",
-      "href": "/transitions-strategiques"
+      "href": "/transitions-strategiques",
+      "situations": [
+        "Prise de fonction d'un nouveau dirigeant",
+        "Réorientation stratégique après une crise"
+      ]
     },
     {
       "number": "02",
       "title": "Transformation organisationnelle",
       "description": "Faire évoluer les structures, les responsabilités et les modes de fonctionnement pour soutenir la croissance.",
-      "href": "/transformation-organisationnelle"
+      "href": "/transformation-organisationnelle",
+      "situations": [
+        "Fusion de deux entités après une acquisition",
+        "Passage à un modèle de fonctionnement plus agile"
+      ]
     },
     {
       "number": "03",
       "title": "Transmission & gouvernance",
       "description": "Préparer les étapes sensibles de succession, d'association ou de réorganisation.",
-      "href": "/transmission-gouvernance"
+      "href": "/transmission-gouvernance",
+      "situations": [
+        "Départ à la retraite du fondateur",
+        "Entrée d'un associé ou d'un investisseur"
+      ]
     },
     {
       "number": "04",
       "title": "Direction stratégique externalisée",
       "description": "Bénéficier d'un regard externe et d'un accompagnement régulier dans les décisions stratégiques.",
-      "href": "/direction-strategique-externalisee"
+      "href": "/direction-strategique-externalisee",
+      "situations": [
+        "PME en croissance sans directeur stratégique",
+        "Organisation en transition entre deux phases de développement"
+      ]
     }
   ]
 }
