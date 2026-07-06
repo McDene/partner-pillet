@@ -2,5 +2,13 @@
   "active": true,
   "title": "Documents de référence",
   "intro": "Articles de presse, guides pratiques et ressources à télécharger.",
-  "items": []
+  "items": [
+    {
+      "file": "/uploads/grupo-tt.pdf",
+      "title": "Test",
+      "category": "Article",
+      "description": "test",
+      "externalUrl": "https://www.google.com/"
+    }
+  ]
 }
