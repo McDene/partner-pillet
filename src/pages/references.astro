@@ -3,33 +3,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import FinalCta from '../components/FinalCta.astro';
 import Footer from '../components/Footer.astro';
-import data from '../content/references.json';
+import seo from '../content/references/seo.json';
+import hero from '../content/references/hero.json';
+import docsData from '../content/references/documents.json';
+import trustData from '../content/references/trust.json';
+import testimonialsData from '../content/references/testimonials.json';
 
 type Document = { title: string; category?: string; description?: string; file?: string; externalUrl?: string };
 type TrustLogo = { name: string; logo: string };
 
-const documents = (data.documents ?? []) as Document[];
-const trustLogos = (data.trustLogos ?? []) as TrustLogo[];
+const documents = (docsData.items ?? []) as Document[];
+const trustLogos = (trustData.logos ?? []) as TrustLogo[];
 
-const hasTestimonials = data.testimonialsActive && data.testimonials?.length > 0;
-const hasTrust = data.trustActive;
-const hasDocs = data.documentsActive;
+const hasTestimonials = testimonialsData.active && testimonialsData.items?.length > 0;
+const hasTrust = trustData.active;
+const hasDocs = docsData.active;
 ---
 
-<BaseLayout title={data.seo.title} description={data.seo.description}>
+<BaseLayout title={seo.title} description={seo.description}>
   <Header />
   <main>
 
     <!-- ── Hero ── -->
     <section class="ref-hero">
-      <img src={data.heroImage || '/assets/pillet-partners-startup.jpg'} alt="" aria-hidden="true" loading="eager" data-ken-burns />
+      <img src={hero.heroImage || '/assets/pillet-partners-startup.jpg'} alt="" aria-hidden="true" loading="eager" data-ken-burns />
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="ref-hero-inner">
         <div class="eyebrow">
           <span class="eyebrow-line" data-animate="line" aria-hidden="true"></span>
-          <span class="eyebrow-text" data-animate style="--pp-delay:.07s">{data.eyebrow}</span>
+          <span class="eyebrow-text" data-animate style="--pp-delay:.07s">{hero.eyebrow}</span>
         </div>
-        <h1 data-animate style="--pp-delay:.16s">{data.pageTitle}</h1>
+        <h1 data-animate style="--pp-delay:.16s">{hero.pageTitle}</h1>
       </div>
     </section>
 
@@ -39,9 +43,9 @@ const hasDocs = data.documentsActive;
         <div class="ref-docs-inner">
           <div class="section-eyebrow" data-reveal>
             <span class="section-line-dark" aria-hidden="true"></span>
-            <span class="section-label-dark">{data.documentsTitle}</span>
+            <span class="section-label-dark">{docsData.title}</span>
           </div>
-          {data.documentsIntro && <p class="docs-intro" data-reveal>{data.documentsIntro}</p>}
+          {docsData.intro && <p class="docs-intro" data-reveal>{docsData.intro}</p>}
 
           {documents.length > 0 ? (
             <ul class="docs-list">
@@ -79,9 +83,9 @@ const hasDocs = data.documentsActive;
       <section class="ref-trust" data-reveal>
         <div class="section-eyebrow">
           <span class="section-line" aria-hidden="true"></span>
-          <span class="section-label">{data.trustTitle}</span>
+          <span class="section-label">{trustData.title}</span>
         </div>
-        {data.trustIntro && <p class="trust-intro">{data.trustIntro}</p>}
+        {trustData.intro && <p class="trust-intro">{trustData.intro}</p>}
         {trustLogos.length > 0 ? (
           <div class="logos-grid">
             {trustLogos.map((logo) => (
@@ -102,13 +106,13 @@ const hasDocs = data.documentsActive;
         <div class="testimonials-inner">
           <div class="section-eyebrow" data-reveal>
             <span class="section-line" aria-hidden="true"></span>
-            <span class="section-label">{data.testimonialsTitle}</span>
+            <span class="section-label">{testimonialsData.title}</span>
           </div>
 
           <div class="carousel" role="region" aria-label="Carrousel de témoignages">
             <div class="carousel-track">
-              {data.testimonials.map((t, i) => (
-                <div class={`slide${i === 0 ? ' active' : ''}`} role="group" aria-label={`Témoignage ${i + 1} sur ${data.testimonials.length}`}>
+              {testimonialsData.items.map((t, i) => (
+                <div class={`slide${i === 0 ? ' active' : ''}`} role="group" aria-label={`Témoignage ${i + 1} sur ${testimonialsData.items.length}`}>
                   <blockquote class="testimonial-block">
                     <span class="quote-mark" aria-hidden="true">"</span>
                     <p class="quote-text">{t.quote}</p>
@@ -121,7 +125,7 @@ const hasDocs = data.documentsActive;
               ))}
             </div>
 
-            {data.testimonials.length > 1 && (
+            {testimonialsData.items.length > 1 && (
               <div class="carousel-controls">
                 <button class="carousel-btn prev" aria-label="Témoignage précédent">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
@@ -129,7 +133,7 @@ const hasDocs = data.documentsActive;
                   </svg>
                 </button>
                 <div class="dots" role="tablist">
-                  {data.testimonials.map((_, i) => (
+                  {testimonialsData.items.map((_, i) => (
                     <button class={`dot${i === 0 ? ' active' : ''}`} role="tab" aria-label={`Aller au témoignage ${i + 1}`} data-index={i}></button>
                   ))}
                 </div>

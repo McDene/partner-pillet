@@ -392,9 +392,6 @@ collections:
             field: { label: "Domaine", name: "item", widget: "string" }
 
   # ─────────────────────────────────────────────
-  # BLOG
-  # ─────────────────────────────────────────────
-  # ─────────────────────────────────────────────
   # PAGE RÉFÉRENCES
   # ─────────────────────────────────────────────
   - name: "references"
@@ -403,71 +400,96 @@ collections:
     editor:
       preview: false
     files:
-      - name: "references"
-        label: "⭐ Références"
-        file: "src/content/references.json"
+
+      - name: "references-hero"
+        label: "🖼 Bannière principale"
+        file: "src/content/references/hero.json"
         fields:
-          - label: "SEO"
-            name: "seo"
-            widget: "object"
-            fields:
-              - { label: "Titre onglet", name: "title", widget: "string" }
-              - { label: "Description méta", name: "description", widget: "text" }
-          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
-          - { label: "Titre (H1)", name: "pageTitle", widget: "string" }
-          - label: "── Témoignages ──────────────────"
-            name: "testimonialsSection"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Afficher les témoignages", name: "dummy", widget: "hidden", default: "" }
-          - label: "Afficher les témoignages"
-            name: "testimonialsActive"
+          - label: "Photo hero (bannière)"
+            name: "heroImage"
+            widget: "image"
+            required: false
+            hint: "Photo pleine largeur en arrière-plan. Format paysage recommandé."
+          - label: "Sur-titre"
+            name: "eyebrow"
+            widget: "string"
+            hint: "Petite ligne au-dessus du titre. Ex : Preuve sociale & ressources"
+          - label: "Titre (H1)"
+            name: "pageTitle"
+            widget: "string"
+
+      - name: "references-documents"
+        label: "📄 Documents de référence"
+        file: "src/content/references/documents.json"
+        fields:
+          - label: "Afficher cette section"
+            name: "active"
             widget: "boolean"
             default: true
-          - { label: "Titre — témoignages", name: "testimonialsTitle", widget: "string" }
-          - label: "Témoignages"
-            name: "testimonials"
-            widget: "list"
-            fields:
-              - { label: "Citation", name: "quote", widget: "text" }
-              - { label: "Auteur / fonction", name: "author", widget: "string" }
-          - label: "── Ils nous font confiance ──────"
-            name: "trustSectionDivider"
-            widget: "hidden"
-            default: ""
-          - label: "Afficher 'Ils nous font confiance'"
-            name: "trustActive"
-            widget: "boolean"
-            default: false
-            hint: "Activer uniquement après validation des clients"
-          - { label: "Titre", name: "trustTitle", widget: "string" }
-          - { label: "Introduction", name: "trustIntro", widget: "text", required: false }
-          - label: "Logos clients"
-            name: "trustLogos"
-            widget: "list"
-            fields:
-              - { label: "Nom du client", name: "name", widget: "string" }
-              - { label: "Logo", name: "logo", widget: "image" }
-          - label: "── Documents ────────────────────"
-            name: "docsSectionDivider"
-            widget: "hidden"
-            default: ""
-          - label: "Afficher les documents"
-            name: "documentsActive"
-            widget: "boolean"
-            default: true
-          - { label: "Titre — documents", name: "documentsTitle", widget: "string" }
-          - { label: "Introduction", name: "documentsIntro", widget: "text", required: false }
+          - { label: "Titre de la section", name: "title", widget: "string" }
+          - { label: "Texte d'introduction", name: "intro", widget: "text", required: false }
           - label: "Documents"
-            name: "documents"
+            name: "items"
             widget: "list"
+            label_singular: "Document"
+            summary: "{{fields.title}}"
             fields:
               - { label: "Titre", name: "title", widget: "string" }
-              - { label: "Catégorie", name: "category", widget: "string", required: false, hint: "Ex: Article de presse, Guide pratique" }
+              - { label: "Catégorie", name: "category", widget: "string", required: false, hint: "Ex : Article de presse, Guide pratique" }
               - { label: "Description", name: "description", widget: "text", required: false }
               - { label: "Fichier PDF (upload)", name: "file", widget: "file", required: false }
               - { label: "Ou lien externe", name: "externalUrl", widget: "string", required: false, hint: "Google Drive, Dropbox, etc." }
+
+      - name: "references-trust"
+        label: "🏢 Ils nous font confiance"
+        file: "src/content/references/trust.json"
+        fields:
+          - label: "Afficher cette section"
+            name: "active"
+            widget: "boolean"
+            default: true
+            hint: "Activer uniquement après validation des clients"
+          - { label: "Titre de la section", name: "title", widget: "string" }
+          - { label: "Texte d'introduction", name: "intro", widget: "text", required: false }
+          - label: "Logos clients"
+            name: "logos"
+            widget: "list"
+            label_singular: "Client"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Nom du client", name: "name", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+
+      - name: "references-testimonials"
+        label: "💬 Témoignages"
+        file: "src/content/references/testimonials.json"
+        fields:
+          - label: "Afficher cette section"
+            name: "active"
+            widget: "boolean"
+            default: true
+          - { label: "Titre de la section", name: "title", widget: "string" }
+          - label: "Témoignages"
+            name: "items"
+            widget: "list"
+            label_singular: "Témoignage"
+            summary: "{{fields.author}}"
+            fields:
+              - { label: "Citation", name: "quote", widget: "text" }
+              - { label: "Auteur / fonction", name: "author", widget: "string", hint: "Ex : DRH d'un groupe industriel" }
+
+      - name: "references-seo"
+        label: "🔍 SEO & Référencement"
+        file: "src/content/references/seo.json"
+        fields:
+          - label: "Titre de l'onglet"
+            name: "title"
+            widget: "string"
+            hint: "Affiché dans l'onglet et sur Google (60 caractères max)."
+          - label: "Description (méta)"
+            name: "description"
+            widget: "text"
+            hint: "Résumé affiché sur Google (160 caractères max)."
 
   # ─────────────────────────────────────────────
   # PAGE CONTACT
