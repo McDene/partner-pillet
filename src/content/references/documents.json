@@ -5,10 +5,9 @@
   "items": [
     {
       "file": "/uploads/grupo-tt.pdf",
-      "title": "Test",
-      "category": "Article",
-      "description": "test",
-      "externalUrl": "https://www.google.com/"
+      "title": "Accompagnement stratégique — Grupo TT",
+      "category": "Étude de cas",
+      "description": "Présentation de la démarche d'accompagnement conduite auprès de Grupo TT : diagnostic organisationnel, définition des axes de transformation et mise en œuvre opérationnelle."
     }
   ]
 }
