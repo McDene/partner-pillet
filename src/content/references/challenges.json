@@ -1,0 +1,28 @@
+{
+  "active": true,
+  "title": "Défis relevés",
+  "intro": "Chaque organisation est différente. Les défis, eux, se ressemblent souvent : une gouvernance qui s'essouffle, une croissance qui complexifie les décisions, un modèle à faire évoluer ou des acteurs à aligner autour d'une vision commune. Voici quelques exemples de situation que nous avons eu le plaisir d'accompagner.",
+  "items": [
+    {
+      "number": "01",
+      "title": "Clarifier une gouvernance devenue trop complexe",
+      "context": "Lorsque les responsabilités deviennent floues, les décisions ralentissent et les tensions apparaissent. C'était le défi d'un collège de direction réunissant quatre institutions.",
+      "intervention": "Diagnostic de gouvernance, entretiens, ateliers d'alignement et recommandations opérationnelles.",
+      "impact": "Une gouvernance clarifiée, des responsabilités mieux définies et des décisions plus rapides, au service de la stratégie."
+    },
+    {
+      "number": "02",
+      "title": "Repenser un modèle face à un environnement en mutation",
+      "context": "L'évolution du cadre réglementaire et du financement remettait en question la pérennité de l'organisation et appelait des choix stratégiques structurants.",
+      "intervention": "Diagnostic stratégique, analyse des scénarios d'évolution, priorisation des activités et élaboration d'une feuille de route.",
+      "impact": "Une vision clarifiée, des priorités partagées et un cap commun pour conduire la transformation."
+    },
+    {
+      "number": "03",
+      "title": "Fédérer les acteurs autour d'un projet complexe",
+      "context": "Un projet territorial de rénovation énergétique des bâtiments nécessitait d'aligner des partenaires aux intérêts et responsabilités multiples autour d'une ambition commune.",
+      "intervention": "Conception de la gouvernance, animation de la réflexion stratégique et définition du modèle d'un futur Centre de compétences.",
+      "impact": "Une vision partagée, une gouvernance fédératrice et des fondations solides pour faire avancer durablement le projet."
+    }
+  ]
+}

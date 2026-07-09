@@ -5,19 +5,15 @@ import FinalCta from '../components/FinalCta.astro';
 import Footer from '../components/Footer.astro';
 import seo from '../content/references/seo.json';
 import hero from '../content/references/hero.json';
-import docsData from '../content/references/documents.json';
-import trustData from '../content/references/trust.json';
+import introData from '../content/references/intro.json';
+import challengesData from '../content/references/challenges.json';
 import testimonialsData from '../content/references/testimonials.json';
 
-type Document = { title: string; category?: string; description?: string; file?: string; externalUrl?: string };
-type TrustLogo = { name: string; logo: string };
+type Challenge = { number: string; title: string; context: string; intervention: string; impact: string };
 
-const documents = (docsData.items ?? []) as Document[];
-const trustLogos = (trustData.logos ?? []) as TrustLogo[];
-
+const challenges = (challengesData.items ?? []) as Challenge[];
+const hasChallenges = challengesData.active && challenges.length > 0;
 const hasTestimonials = testimonialsData.active && testimonialsData.items?.length > 0;
-const hasTrust = trustData.active;
-const hasDocs = docsData.active;
 ---
 
 <BaseLayout title={seo.title} description={seo.description}>
@@ -37,66 +33,58 @@ const hasDocs = docsData.active;
       </div>
     </section>
 
-    <!-- ── Documents ── -->
-    {hasDocs && (
-      <section class="ref-docs">
-        <div class="ref-docs-inner">
+    <!-- ── Introduction ── -->
+    <section class="ref-intro">
+      <div class="intro-grid">
+        <p class="intro-text" data-reveal>{introData.text}</p>
+        <div class="intro-card" data-reveal style="--pp-delay:.12s">
+          <ul class="stats-list">
+            {introData.stats.map(stat => (
+              <li>
+                <span class="stat-dash" aria-hidden="true"></span>
+                {stat}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Défis relevés ── -->
+    {hasChallenges && (
+      <section class="ref-challenges">
+        <div class="challenges-inner">
           <div class="section-eyebrow" data-reveal>
             <span class="section-line-dark" aria-hidden="true"></span>
-            <span class="section-label-dark">{docsData.title}</span>
+            <span class="section-label-dark">{challengesData.title}</span>
           </div>
-          {docsData.intro && <p class="docs-intro" data-reveal>{docsData.intro}</p>}
+          <p class="challenges-intro" data-reveal style="--pp-delay:.08s">{challengesData.intro}</p>
 
-          {documents.length > 0 ? (
-            <ul class="docs-list">
-              {documents.map((doc, i) => (
-                <li class="doc-item" data-reveal style={`--pp-delay: ${(i * 0.07).toFixed(2)}s`}>
-                  <div class="doc-meta">
-                    {doc.category && <span class="doc-category">{doc.category}</span>}
-                    <h3 class="doc-title">{doc.title}</h3>
-                    {doc.description && <p class="doc-description">{doc.description}</p>}
+          <ol class="challenges-list">
+            {challenges.map((item, i) => (
+              <li class="challenge-item" data-reveal style={`--pp-delay: ${(i * 0.08).toFixed(2)}s`}>
+                <span class="challenge-number" aria-hidden="true">{item.number}</span>
+                <div class="challenge-body">
+                  <h3 class="challenge-title">{item.title}</h3>
+                  <div class="challenge-cols">
+                    <div class="challenge-col">
+                      <span class="col-label">Contexte</span>
+                      <p>{item.context}</p>
+                    </div>
+                    <div class="challenge-col">
+                      <span class="col-label">Intervention</span>
+                      <p>{item.intervention}</p>
+                    </div>
+                    <div class="challenge-col col-impact">
+                      <span class="col-label">Impact</span>
+                      <p>{item.impact}</p>
+                    </div>
                   </div>
-                  <a
-                    href={doc.file || doc.externalUrl || '#'}
-                    class="doc-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    download={doc.file ? true : undefined}
-                  >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" aria-hidden="true">
-                      <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a1 1 0 001 1h14a1 1 0 001-1v-2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Télécharger
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p class="docs-empty" data-reveal>Les documents seront disponibles prochainement.</p>
-          )}
-        </div>
-      </section>
-    )}
-
-    <!-- ── Ils nous font confiance ── -->
-    {hasTrust && (
-      <section class="ref-trust" data-reveal>
-        <div class="section-eyebrow">
-          <span class="section-line" aria-hidden="true"></span>
-          <span class="section-label">{trustData.title}</span>
-        </div>
-        {trustData.intro && <p class="trust-intro">{trustData.intro}</p>}
-        {trustLogos.length > 0 ? (
-          <div class="logos-grid">
-            {trustLogos.map((logo) => (
-              <div class="logo-item" data-reveal>
-                <img src={logo.logo} alt={logo.name} loading="lazy" />
-              </div>
+                </div>
+              </li>
             ))}
-          </div>
-        ) : (
-          <p class="trust-empty">Les logos seront ajoutés prochainement.</p>
-        )}
+          </ol>
+        </div>
       </section>
     )}
 
@@ -151,7 +139,7 @@ const hasDocs = docsData.active;
 
     <FinalCta
       title="Parlons de votre situation."
-      text="Un premier échange permet souvent de clarifier rapidement les enjeux et les options possibles."
+      text="Chaque mission est différente, mais toutes poursuivent le même objectif : aider les dirigeants à prendre les bonnes décisions lorsque leur organisation traverse une étape décisive. Un premier échange permet souvent de clarifier rapidement les enjeux et les options possibles."
       cta={{ label: "Planifier un entretien confidentiel", href: "/contact" }}
     />
   </main>
@@ -176,7 +164,7 @@ const hasDocs = docsData.active;
     }
 
     function startTimer() {
-      if (!reduced) timer = setInterval(function () { goTo(current + 1); }, 6000);
+      if (!reduced) timer = setInterval(function () { goTo(current + 1); }, 10000);
     }
 
     function stopTimer() { clearInterval(timer); }
@@ -275,13 +263,70 @@ h1 {
   margin: 0;
 }
 
-/* ── Shared section eyebrow ──────────── */
+/* ── Introduction ─────────────────────── */
+
+.ref-intro {
+  padding: 80px var(--pad) 0;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: start;
+}
+
+.intro-text {
+  font-family: 'Spectral', serif;
+  font-size: clamp(19px, 1.8vw, 26px);
+  line-height: 1.56;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--navy);
+  margin: 0;
+}
+
+.intro-card {
+  border-left: 3px solid var(--sand);
+  padding: 28px 32px;
+  background: var(--paper);
+  border-radius: 0 3px 3px 0;
+}
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stats-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.stat-dash {
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+
+/* ── Section eyebrow pattern ─────────── */
 
 .section-eyebrow {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .section-line {
@@ -316,10 +361,103 @@ h1 {
   color: var(--sand);
 }
 
+/* ── Défis relevés ───────────────────── */
+
+.ref-challenges {
+  padding: clamp(72px, 9vw, 112px) var(--pad) 0;
+}
+
+.challenges-inner {
+  max-width: 1060px;
+}
+
+.challenges-intro {
+  font-size: clamp(16px, 1.45vw, 18.5px);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 0 0 64px;
+}
+
+.challenges-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.challenge-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  padding: 52px 0;
+  border-top: 1px solid rgba(26, 39, 51, 0.13);
+}
+
+.challenge-item:last-child {
+  border-bottom: 1px solid rgba(26, 39, 51, 0.13);
+}
+
+.challenge-number {
+  font-family: 'Spectral', serif;
+  font-size: 36px;
+  color: var(--sand);
+  font-weight: 400;
+  line-height: 1;
+  padding-top: 6px;
+}
+
+.challenge-body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.challenge-title {
+  font-family: 'Spectral', serif;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 400;
+  color: var(--navy);
+  margin: 0;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+
+.challenge-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.challenge-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.col-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.col-impact .col-label {
+  color: var(--teal, var(--blue));
+}
+
+.challenge-col p {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
 /* ── Témoignages ─────────────────────── */
 
 .ref-testimonials {
   background: var(--navy);
+  margin-top: clamp(72px, 9vw, 112px);
   padding: clamp(64px, 9vw, 112px) var(--pad);
 }
 
@@ -330,7 +468,7 @@ h1 {
 
 .carousel-track {
   display: grid;
-  min-height: 280px;
+  min-height: 260px;
 }
 
 .slide {
@@ -398,8 +536,6 @@ cite {
   letter-spacing: 0.02em;
 }
 
-/* Carousel controls */
-
 .carousel-controls {
   display: flex;
   align-items: center;
@@ -449,166 +585,39 @@ cite {
   transform: scale(1.3);
 }
 
-/* ── Ils nous font confiance ─────────── */
-
-.ref-trust {
-  padding: clamp(64px, 9vw, 112px) var(--pad);
-  background: #fff;
-}
-
-.trust-intro {
-  font-size: 17px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-  max-width: 640px;
-  margin: 0 0 48px;
-}
-
-.logos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px 48px;
-  align-items: center;
-}
-
-.logo-item img {
-  height: 44px;
-  width: auto;
-  max-width: 160px;
-  object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.55;
-  transition: filter 0.28s, opacity 0.28s;
-}
-
-.logo-item img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-}
-
-.trust-empty {
-  font-size: 16px;
-  color: var(--ink-soft);
-  font-style: italic;
-  opacity: 0.7;
-}
-
-/* ── Documents ───────────────────────── */
-
-.ref-docs {
-  background: var(--paper);
-  padding: clamp(64px, 9vw, 112px) var(--pad);
-}
-
-.ref-docs-inner {
-  max-width: 860px;
-}
-
-.docs-intro {
-  font-size: 17px;
-  color: var(--ink-soft);
-  line-height: 1.65;
-  max-width: 640px;
-  margin: 0 0 48px;
-}
-
-.docs-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.doc-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  padding: 28px 0;
-  border-top: 1px solid rgba(26,39,51,.1);
-}
-
-.doc-item:last-child {
-  border-bottom: 1px solid rgba(26,39,51,.1);
-}
-
-.doc-meta {
-  flex: 1;
-  min-width: 0;
-}
-
-.doc-category {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 6px;
-}
-
-.doc-title {
-  font-family: 'Spectral', serif;
-  font-size: clamp(17px, 1.6vw, 21px);
-  font-weight: 500;
-  color: var(--navy);
-  margin: 0 0 6px;
-}
-
-.doc-description {
-  font-size: 15px;
-  color: var(--ink-soft);
-  line-height: 1.55;
-  margin: 0;
-}
-
-.doc-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--blue);
-  border: 1px solid rgba(26,94,134,.3);
-  border-radius: 2px;
-  padding: 10px 20px;
-  transition: background 0.18s, color 0.18s, border-color 0.18s;
-}
-
-.doc-btn:hover {
-  background: var(--blue);
-  color: #fff;
-  border-color: var(--blue);
-}
-
-.docs-empty {
-  font-size: 16px;
-  color: var(--ink-soft);
-  font-style: italic;
-  opacity: 0.7;
-}
-
 /* ── Responsive ──────────────────────── */
+
+@media (max-width: 960px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .intro-card { max-width: 480px; }
+  .challenge-cols { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .col-impact { grid-column: 1 / -1; }
+}
 
 @media (max-width: 768px) {
   .ref-hero { height: 380px; }
   .hero-overlay {
     background: linear-gradient(180deg, rgba(14,58,92,.92) 0%, rgba(14,58,92,.75) 60%, rgba(14,58,92,.22) 100%);
   }
-  .carousel-track { min-height: 320px; }
+  .ref-intro { padding-top: 64px; }
+  .challenge-item { grid-template-columns: 56px 1fr; gap: 20px; padding: 40px 0; }
+  .challenge-number { font-size: 28px; }
+  .carousel-track { min-height: 300px; }
   .quote-mark { font-size: 72px; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .ref-hero { height: 300px; }
   h1 { font-size: clamp(34px, 8vw, 50px); }
-  .carousel-track { min-height: 380px; }
+  .intro-card { max-width: 100%; }
+  .challenge-item { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
+  .challenge-number { font-size: 22px; padding-top: 0; }
+  .challenge-cols { grid-template-columns: 1fr; gap: 20px; }
+  .col-impact { grid-column: auto; }
+  .carousel-track { min-height: 360px; }
   .quote-text { font-size: 17px; }
-  .doc-item { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .doc-btn { width: 100%; justify-content: center; }
-  .logos-grid { gap: 24px 32px; }
 }
 </style>

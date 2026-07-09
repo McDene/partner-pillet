@@ -419,52 +419,46 @@ collections:
           - label: "Sur-titre"
             name: "eyebrow"
             widget: "string"
-            hint: "Petite ligne au-dessus du titre. Ex : Preuve sociale & ressources"
+            hint: "Petite ligne au-dessus du titre."
           - label: "Titre (H1)"
             name: "pageTitle"
             widget: "string"
 
-      - name: "references-documents"
-        label: "📄 Documents de référence"
-        file: "src/content/references/documents.json"
+      - name: "references-intro"
+        label: "📊 Introduction & chiffres clés"
+        file: "src/content/references/intro.json"
+        fields:
+          - label: "Texte d'introduction"
+            name: "text"
+            widget: "text"
+            hint: "Phrase d'accroche expliquant l'origine des références."
+          - label: "Chiffres & repères (encadré)"
+            name: "stats"
+            widget: "list"
+            hint: "Chaque ligne apparaît dans l'encadré latéral."
+            field: { label: "Repère", name: "item", widget: "string" }
+
+      - name: "references-challenges"
+        label: "🎯 Défis relevés"
+        file: "src/content/references/challenges.json"
         fields:
           - label: "Afficher cette section"
             name: "active"
             widget: "boolean"
             default: true
           - { label: "Titre de la section", name: "title", widget: "string" }
-          - { label: "Texte d'introduction", name: "intro", widget: "text", required: false }
-          - label: "Documents"
+          - { label: "Texte d'introduction", name: "intro", widget: "text" }
+          - label: "Exemples de missions"
             name: "items"
             widget: "list"
-            label_singular: "Document"
-            summary: "{{fields.title}}"
+            label_singular: "Mission"
+            summary: "{{fields.number}}. {{fields.title}}"
             fields:
+              - { label: "Numéro", name: "number", widget: "string", hint: "Ex : 01" }
               - { label: "Titre", name: "title", widget: "string" }
-              - { label: "Catégorie", name: "category", widget: "string", required: false, hint: "Ex : Article de presse, Guide pratique" }
-              - { label: "Description", name: "description", widget: "text", required: false }
-              - { label: "Fichier PDF (upload)", name: "file", widget: "file", required: false }
-              - { label: "Ou lien externe", name: "externalUrl", widget: "string", required: false, hint: "Google Drive, Dropbox, etc." }
-
-      - name: "references-trust"
-        label: "🏢 Ils nous font confiance"
-        file: "src/content/references/trust.json"
-        fields:
-          - label: "Afficher cette section"
-            name: "active"
-            widget: "boolean"
-            default: true
-            hint: "Activer uniquement après validation des clients"
-          - { label: "Titre de la section", name: "title", widget: "string" }
-          - { label: "Texte d'introduction", name: "intro", widget: "text", required: false }
-          - label: "Logos clients"
-            name: "logos"
-            widget: "list"
-            label_singular: "Client"
-            summary: "{{fields.name}}"
-            fields:
-              - { label: "Nom du client", name: "name", widget: "string" }
-              - { label: "Logo", name: "logo", widget: "image" }
+              - { label: "Contexte", name: "context", widget: "text", hint: "La situation de départ de l'organisation." }
+              - { label: "Intervention", name: "intervention", widget: "text", hint: "Ce qui a été mis en place concrètement." }
+              - { label: "Impact", name: "impact", widget: "text", hint: "Les résultats obtenus." }
 
       - name: "references-testimonials"
         label: "💬 Témoignages"
