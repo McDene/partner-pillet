@@ -4,14 +4,16 @@ interface DomainItem {
   title: string;
   description: string;
   href?: string;
-  situations?: string[];
 }
 interface Props {
   title: string;
   eyebrow: string;
   items: DomainItem[];
+  situationsTitle?: string;
+  situations?: string[];
 }
-const { title, eyebrow, items } = Astro.props;
+const { title, eyebrow, items, situationsTitle, situations } = Astro.props;
+const hasSituations = situations && situations.length > 0;
 ---
 
 <section class="domains" id="domaines">
@@ -27,14 +29,7 @@ const { title, eyebrow, items } = Astro.props;
             <span class="number">{item.number}</span>
             <div class="content">
               <h3>{item.title}</h3>
-              <div class="content-right">
-                <p>{item.description}</p>
-                {item.situations && item.situations.length > 0 && (
-                  <ul class="situations">
-                    {item.situations.map(s => <li>{s}</li>)}
-                  </ul>
-                )}
-              </div>
+              <p>{item.description}</p>
             </div>
             <span class="arrow" aria-hidden="true">→</span>
           </a>
@@ -43,14 +38,7 @@ const { title, eyebrow, items } = Astro.props;
             <span class="number">{item.number}</span>
             <div class="content">
               <h3>{item.title}</h3>
-              <div class="content-right">
-                <p>{item.description}</p>
-                {item.situations && item.situations.length > 0 && (
-                  <ul class="situations">
-                    {item.situations.map(s => <li>{s}</li>)}
-                  </ul>
-                )}
-              </div>
+              <p>{item.description}</p>
             </div>
             <span class="arrow" aria-hidden="true">→</span>
           </span>
@@ -58,6 +46,20 @@ const { title, eyebrow, items } = Astro.props;
       </li>
     ))}
   </ul>
+
+  {hasSituations && (
+    <div class="situations-block" data-reveal>
+      <span class="situations-label">{situationsTitle || 'Exemples de situations concrètes'}</span>
+      <ul class="situations-list">
+        {situations!.map(s => (
+          <li>
+            <span class="situation-dash" aria-hidden="true"></span>
+            {s}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
 </section>
 
 <style>
@@ -134,13 +136,6 @@ a.row-link:hover {
   gap: 28px;
 }
 
-.content-right {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 520px;
-}
-
 h3 {
   font-family: 'Spectral', serif;
   font-size: 27px;
@@ -160,28 +155,7 @@ p {
   font-size: 16.5px;
   line-height: 1.5;
   color: var(--ink-soft);
-}
-
-.situations {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.situations li {
-  border: none;
-  font-size: 13px;
-  font-style: italic;
-  color: var(--ink-soft);
-  opacity: 0.72;
-  background: rgba(26, 39, 51, 0.055);
-  border-radius: 999px;
-  padding: 4px 13px;
-  line-height: 1.4;
-  white-space: nowrap;
+  max-width: 520px;
 }
 
 .arrow {
@@ -193,6 +167,59 @@ p {
 a.row-link:hover .arrow {
   transform: translateX(6px);
 }
+
+/* ── Situations block ── */
+
+.situations-block {
+  margin-top: 40px;
+  padding: 32px 40px;
+  background: var(--paper);
+  border-left: 3px solid var(--sand);
+  border-radius: 0 3px 3px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.situations-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+.situations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.situations-list li {
+  border: none;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: 'Spectral', serif;
+  font-size: clamp(16px, 1.5vw, 19px);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--navy);
+}
+
+.situation-dash {
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+  margin-top: 0.6em;
+}
+
+/* ── Responsive ── */
 
 @media (max-width: 900px) {
   .row-link {
@@ -207,12 +234,12 @@ a.row-link:hover .arrow {
     flex-direction: column;
     gap: 8px;
   }
-  .content-right { max-width: 100%; }
 }
 
 @media (max-width: 768px) {
   .domains { padding-top: 64px; }
   .header { flex-direction: column; gap: 6px; align-items: flex-start; }
+  .situations-block { padding: 24px 28px; }
 }
 
 @media (max-width: 600px) {
@@ -222,12 +249,12 @@ a.row-link:hover .arrow {
   }
   .number { font-size: 20px; }
   .arrow { display: none; }
-  .situations li { white-space: normal; }
 }
 
 @media (max-width: 480px) {
   .row-link { padding: 20px 0; gap: 8px; }
   .number { font-size: 18px; }
+  .situations-block { padding: 20px 20px; }
 }
 
 @media (max-width: 400px) {
