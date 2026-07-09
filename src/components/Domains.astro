@@ -9,11 +9,12 @@ interface Props {
   title: string;
   eyebrow: string;
   items: DomainItem[];
+  situationsActive?: boolean;
   situationsTitle?: string;
   situations?: string[];
 }
-const { title, eyebrow, items, situationsTitle, situations } = Astro.props;
-const hasSituations = situations && situations.length > 0;
+const { title, eyebrow, items, situationsActive, situationsTitle, situations } = Astro.props;
+const hasSituations = situationsActive && situations && situations.length > 0;
 ---
 
 <section class="domains" id="domaines">
@@ -49,7 +50,7 @@ const hasSituations = situations && situations.length > 0;
 
   {hasSituations && (
     <div class="situations-block" data-reveal>
-      <span class="situations-label">{situationsTitle || 'Exemples de situations concrètes'}</span>
+      <p class="situations-label">{situationsTitle || 'Exemples de situations concrètes'}</p>
       <ul class="situations-list">
         {situations!.map(s => (
           <li>
@@ -171,22 +172,21 @@ a.row-link:hover .arrow {
 /* ── Situations block ── */
 
 .situations-block {
-  margin-top: 40px;
-  padding: 32px 40px;
-  background: var(--paper);
-  border-left: 3px solid var(--sand);
-  border-radius: 0 3px 3px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 30px;
+  padding: 36px 4px 0;
+  border-top: 1px solid rgba(26, 39, 51, 0.1);
 }
 
 .situations-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--sand);
+  line-height: 1.45;
+  padding-top: 5px;
 }
 
 .situations-list {
@@ -195,7 +195,7 @@ a.row-link:hover .arrow {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .situations-list li {
@@ -216,7 +216,7 @@ a.row-link:hover .arrow {
   height: 1px;
   background: var(--sand);
   flex-shrink: 0;
-  margin-top: 0.6em;
+  margin-top: 0.65em;
 }
 
 /* ── Responsive ── */
@@ -239,7 +239,7 @@ a.row-link:hover .arrow {
 @media (max-width: 768px) {
   .domains { padding-top: 64px; }
   .header { flex-direction: column; gap: 6px; align-items: flex-start; }
-  .situations-block { padding: 24px 28px; }
+  .situations-block { grid-template-columns: 60px 1fr; gap: 16px; }
 }
 
 @media (max-width: 600px) {
@@ -254,7 +254,8 @@ a.row-link:hover .arrow {
 @media (max-width: 480px) {
   .row-link { padding: 20px 0; gap: 8px; }
   .number { font-size: 18px; }
-  .situations-block { padding: 20px 20px; }
+  .situations-block { grid-template-columns: 1fr; gap: 12px; }
+  .situations-label { padding-top: 0; }
 }
 
 @media (max-width: 400px) {

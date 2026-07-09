@@ -27,6 +27,7 @@
       "href": "/direction-strategique-externalisee"
     }
   ],
+  "situationsActive": true,
   "situationsTitle": "Exemples de situations concrètes",
   "situations": [
     "Votre directeur général quitte ses fonctions et la question de la succession — interne ou externe — reste ouverte.",

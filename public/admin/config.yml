@@ -114,16 +114,21 @@ collections:
               - { label: "Titre", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Lien", name: "href", widget: "string", required: false, hint: "Laisser vide si la page n'existe pas encore." }
+          - label: "Afficher les exemples de situations"
+            name: "situationsActive"
+            widget: "boolean"
+            default: true
+            hint: "Affiche ou masque le bloc d'exemples sous la liste des domaines."
           - label: "Titre — exemples de situations"
             name: "situationsTitle"
             widget: "string"
             required: false
-            hint: "Titre affiché au-dessus des exemples. Ex : Exemples de situations concrètes"
+            hint: "Ex : Exemples de situations concrètes"
           - label: "Exemples de situations concrètes"
             name: "situations"
             widget: "list"
             required: false
-            hint: "1 à 2 phrases courtes pour que les visiteurs se reconnaissent. Affichées dans un encadré sous la liste des domaines."
+            hint: "1 à 2 phrases courtes pour que les visiteurs se reconnaissent."
             field: { label: "Situation", name: "item", widget: "string" }
 
       - name: "approach"
