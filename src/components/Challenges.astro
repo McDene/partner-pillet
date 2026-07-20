@@ -24,7 +24,7 @@ const { eyebrow, title, intro, introAccent, items, conclusion } = Astro.props;
       <ul>
         {items.map((item, i) => (
           <li data-reveal style={`--pp-delay: ${(i * 0.08).toFixed(2)}s`}>
-            <span class="number">{i + 1}</span>
+            <span class="dash" aria-hidden="true"></span>
             <span class="text">{item}</span>
           </li>
         ))}
@@ -107,13 +107,13 @@ li {
   border-top: 1px solid rgba(26, 39, 51, 0.13);
 }
 
-.number {
-  font-family: 'Spectral', serif;
-  font-size: 16px;
-  color: var(--sand);
-  font-style: italic;
-  flex: 0 0 auto;
-  width: 22px;
+.dash {
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--sand);
+  flex-shrink: 0;
+  margin-top: 0.65em;
 }
 
 .text {
